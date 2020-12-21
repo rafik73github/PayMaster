@@ -12,15 +12,19 @@ namespace PayMaster
         public int TransactionId { get; set; }
         public string TransactionDate { get; set; }
         public int TransactionPersonId { get; set; }
+        public string TransactionPersonName { get; set; }
+        public string TransactionPersonSurname { get; set; }
         public int TransactionAmount { get; set; }
         public bool TransactionPayIn { get; set; }
 
 
-        public Transaction(int transactionId, string transactionDate, int transactionPersonId, int transactionAmount, bool transactionPayIn)
+        public Transaction(int transactionId, string transactionDate, int transactionPersonId, string transactionPersonName, string transactionPersonSurname, int transactionAmount, bool transactionPayIn)
         {
             this.TransactionId = transactionId;
             this.TransactionDate = transactionDate;
             this.TransactionPersonId = transactionPersonId;
+            this.TransactionPersonName = transactionPersonName;
+            this.TransactionPersonSurname = transactionPersonSurname;
             this.TransactionAmount = transactionAmount;
             this.TransactionPayIn = transactionPayIn;
         }

@@ -20,11 +20,19 @@ namespace PayMaster
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        SQLActions sqlActions = new SQLActions();
+        SQLTables sqlTables = new SQLTables();
         public MainWindow()
         {
             InitializeComponent();
 
-           
+            sqlTables.CreateTablePersons();
+
+           // sqlActions.AddPerson(new Person("Jacek", "Placek", false));
+            sqlActions.ReadAllPersons();
+
+
         }
     }
 }

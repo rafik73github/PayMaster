@@ -3,27 +3,65 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace PayMaster
 {
     class SQLTables
     {
+        SQLiteConnection sqlConnection;
+        SQLiteCommand command;
 
-        public static void CreateTables()
+        public SQLTables()
+        {
+            sqlConnection = new SQLiteConnection(DatabasePatch.GetDatabasePatch());
+            sqlConnection.Open();
+            command = sqlConnection.CreateCommand();
+        }
+
+
+
+
+        public void ExecuteQuery(string sqlCommand)
         {
 
-            string sqlCommand = "CREATE TABLE IF NOT EXISTS my_table" +
+            SQLiteCommand triggerCommand = sqlConnection.CreateCommand();
+            triggerCommand.CommandText = sqlCommand;
+            triggerCommand.ExecuteNonQuery();
+        }
+
+        public void CreateTableTransactions()
+        {
+            
+            string sqlCommand = "CREATE TABLE IF NOT EXISTS transactions" +
             "(" +
-            "id_test INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " name STRING," +
-            " surname STRING," +
-            " money INTEGER," +
-            " payment BOOLEAN" +
+            "tr_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            " tr_date STRING," +
+            " tr_person_id INTEGER," +
+            " tr_amount INTEGER," +
+            " tr_pay_in BOOLEAN" +
             ")";
-            new SQLiteConn().ExecuteQuery(sqlCommand);
+            ExecuteQuery(sqlCommand);
 
 
         }
+
+        public void CreateTablePersons()
+        {
+            
+            string sqlCommand = "CREATE TABLE IF NOT EXISTS persons" +
+            "(" +
+            "person_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            " person_name STRING," +
+            " person_surname STRING," +
+            " person_archived BOOLEAN" +
+            ")";
+            ExecuteQuery(sqlCommand);
+
+
+        }
+
+
 
     }
 }
