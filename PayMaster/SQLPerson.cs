@@ -7,48 +7,33 @@ using System.Data.SQLite;
 
 namespace PayMaster
 {
-    class SQLTables
+    class SQLPerson
     {
+
+
         SQLiteConnection sqlConnection;
         SQLiteCommand command;
 
-        public SQLTables()
+        public SQLPerson()
         {
             sqlConnection = new SQLiteConnection(DatabasePatch.GetDatabasePatch());
             sqlConnection.Open();
             command = sqlConnection.CreateCommand();
         }
 
-
-
+        
 
         public void ExecuteQuery(string sqlCommand)
         {
-
+            
             SQLiteCommand triggerCommand = sqlConnection.CreateCommand();
             triggerCommand.CommandText = sqlCommand;
             triggerCommand.ExecuteNonQuery();
         }
 
-        public void CreateTableTransactions()
-        {
-            
-            string sqlCommand = "CREATE TABLE IF NOT EXISTS transactions" +
-            "(" +
-            "tr_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " tr_date STRING," +
-            " tr_person_id INTEGER," +
-            " tr_amount INTEGER," +
-            " tr_pay_in BOOLEAN" +
-            ")";
-            ExecuteQuery(sqlCommand);
-
-
-        }
-
         public void CreateTablePersons()
         {
-            
+
             string sqlCommand = "CREATE TABLE IF NOT EXISTS persons" +
             "(" +
             "person_id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -62,6 +47,46 @@ namespace PayMaster
         }
 
 
+
+        
+
+        public void AddPerson(Person person)
+        {
+           
+            string sqlCommand = "INSERT INTO persons" +
+            " (person_name, person_surname, person_archived)" +
+            " values" +
+            " (" +
+            "'" + person.PersonName + "', '" + person.PersonSurname + "', " + person.PersonArchived +
+            ")";
+           ExecuteQuery(sqlCommand);
+
+        }
+
+        public void GetAllPersons()
+        {
+           
+            command.CommandText = "SELECT" +
+                " *" +
+                " FROM persons";
+                
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+               
+
+                Console.WriteLine("person_id: " + reader["person_id"]
+                    + " |imię: " + reader["person_name"]
+                    + " |nazwisko: " + reader["person_surname"]
+                    );
+
+            }
+            reader.Close();
+
+
+        }
 
     }
 }

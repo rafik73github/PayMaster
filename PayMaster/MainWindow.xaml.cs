@@ -21,18 +21,23 @@ namespace PayMaster
     public partial class MainWindow : Window
     {
 
-        SQLActions sqlActions = new SQLActions();
-        SQLTables sqlTables = new SQLTables();
+        SQLPerson sqlPerson = new SQLPerson();
+        SQLTransaction sqlTransaction = new SQLTransaction();
         public MainWindow()
         {
             InitializeComponent();
 
-            sqlTables.CreateTablePersons();
+            sqlPerson.CreateTablePersons();
+            sqlTransaction.CreateTableTransactions();
 
-           // sqlActions.AddPerson(new Person("Jacek", "Placek", false));
-            sqlActions.ReadAllPersons();
+            //sqlPerson.AddPerson(new Person("Tomek", "Domek", false));
+            sqlPerson.GetAllPersons();
 
 
+            // sqlTransaction.AddTransaction(new Transaction("2020-12-22", 3, -50, false));
+            sqlTransaction.GetTransactionByPayment(false);
+
+            
         }
     }
 }

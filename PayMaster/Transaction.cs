@@ -28,5 +28,23 @@ namespace PayMaster
             this.TransactionAmount = transactionAmount;
             this.TransactionPayIn = transactionPayIn;
         }
+
+        public Transaction(string transactionDate, int transactionPersonId, string transactionPersonName, string transactionPersonSurname, int transactionAmount, bool transactionPayIn)
+        {
+            this.TransactionDate = transactionDate;
+            this.TransactionPersonId = transactionPersonId;
+            this.TransactionPersonName = transactionPersonName;
+            this.TransactionPersonSurname = transactionPersonSurname;
+            this.TransactionAmount = transactionAmount;
+            this.TransactionPayIn = transactionPayIn;
+        }
+
+        public Transaction(string transactionDate, int transactionPersonId, int transactionAmount, bool transactionPayIn)
+        {
+            this.TransactionDate = transactionDate;
+            this.TransactionPersonId = transactionPersonId;
+            this.TransactionAmount = transactionAmount;
+            this.TransactionPayIn = transactionPayIn;
+        }
     }
 }
