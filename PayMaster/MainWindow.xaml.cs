@@ -30,14 +30,22 @@ namespace PayMaster
             sqlPerson.CreateTablePersons();
             sqlTransaction.CreateTableTransactions();
 
-            //sqlPerson.AddPerson(new Person("Tomek", "Domek", false));
-            sqlPerson.GetAllPersons();
+            //sqlPerson.AddPerson(new Person("Mirek", "Świrek", false));
+           // sqlPerson.GetAllPersons();
 
 
-            // sqlTransaction.AddTransaction(new Transaction("2020-12-22", 3, -50, false));
-            sqlTransaction.GetTransactionByPayment(false);
-
+             //sqlTransaction.AddTransaction(new Transaction("2020-11-01", 3, "650","wypłata", false));
             
+            // sqlTransaction.GetTransactionByPayment(false);
+
+            MainGrid.ItemsSource = sqlTransaction.GetAllTransactionList();
+        }
+
+        private void BtnPayIn_Click(object sender, RoutedEventArgs e)
+        {
+            PayIn payIn = new PayIn();
+            this.Close();
+            payIn.Show();
         }
     }
 }

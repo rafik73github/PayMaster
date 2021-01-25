@@ -5,8 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PayMaster"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="700" Width="1200">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="119*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="BtnPayIn" Content="WPŁATA" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="220" Height="60" Click="BtnPayIn_Click"/>
+        <Button x:Name="BtnPayOut" Content="WYPŁATA" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Width="220" Height="60"/>
+        <Button x:Name="BtnShowRaport" Content="RAPORTY" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Width="220" Height="60"/>
+        <DataGrid x:Name="MainGrid" AutoGenerateColumns="False" Grid.Column="1" HorizontalAlignment="Left" Height="580" Margin="10,26,0,0" VerticalAlignment="Top" Width="932">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="100" FontSize="14" Header="DATA" Binding="{Binding TransactionDate}" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="200" FontSize="14" Header="OSOBA" Binding="{Binding TransactionPersonName}" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="100" FontSize="14" Header="KWOTA" Binding="{Binding TransactionAmount}" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="529" FontSize="14" Header="OPIS" Binding="{Binding TransactionDescription}" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>

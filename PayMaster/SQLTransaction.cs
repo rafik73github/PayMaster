@@ -37,6 +37,7 @@ namespace PayMaster
             " tr_date STRING," +
             " tr_person_id INTEGER," +
             " tr_amount INTEGER," +
+            " tr_description STRING," +
             " tr_pay_in BOOLEAN" +
             ")";
             ExecuteQuery(sqlCommand);
@@ -46,50 +47,58 @@ namespace PayMaster
 
         public void AddTransaction(Transaction transaction)
         {
-
+            int amount = Convert.ToInt32(transaction.TransactionAmount);
+            if(transaction.TransactionPayIn == false) { amount *= -1; }
             string sqlCommand = "INSERT INTO transactions" +
-            " (tr_date, tr_person_id, tr_amount, tr_pay_in)" +
+            " (tr_date, tr_person_id, tr_amount, tr_description, tr_pay_in)" +
             " values" +
             " (" +
-            "'" + transaction.TransactionDate + "', " + transaction.TransactionPersonId + ", " + transaction.TransactionAmount + ", " + transaction.TransactionPayIn +
+            "'" + transaction.TransactionDate + "', " 
+            + transaction.TransactionPersonId + ", " 
+            + amount + ", "
+            + "'" + transaction.TransactionDescription + "', "
+            + transaction.TransactionPayIn +
             ")";
             ExecuteQuery(sqlCommand);
 
         }
 
-        public void GetAllTransaction()
+        public List<Transaction> GetAllTransactionList()
         {
-
+            List<Transaction> result = new List<Transaction>();
             double convertedMoney;
             command.CommandText = "SELECT" +
                 " a.tr_id AS a_tr_id," +
                 " a.tr_date AS a_tr_date," +
                 " a.tr_person_id AS a_tr_person_id," +
                 " a.tr_amount AS a_tr_amount," +
+                " a.tr_description AS a_tr_description," +
                 " a.tr_pay_in AS a_tr_pay_in," +
                 " b.person_name AS b_person_name," +
                 " b.person_surname AS b_person_surname" +
                 " FROM transactions AS a" +
-                " LEFT JOIN persons AS b ON a.tr_person_id = b.person_id";
+                " LEFT JOIN persons AS b ON a.tr_person_id = b.person_id ORDER BY" +
+                " a.tr_date ASC";
 
             SQLiteDataReader reader = command.ExecuteReader();
 
             while (reader.Read())
             {
                 convertedMoney = Convert.ToDouble(reader["a_tr_amount"]) / 100;
+                result.Add(new Transaction(Convert.ToInt32(reader["a_tr_id"]),
+                                           reader["a_tr_date"].ToString(),
+                                           Convert.ToInt32(reader["a_tr_person_id"]),
+                                           reader["b_person_surname"].ToString() + " " + reader["b_person_name"].ToString(),
+                                           String.Format("{0:N2}", convertedMoney),
+                                           reader["a_tr_description"].ToString(),
+                                           Convert.ToBoolean(reader["a_tr_pay_in"])));
 
-                Console.WriteLine("data: " + reader["a_tr_date"]
-                    + " |imię: " + reader["b_person_name"]
-                    + " |nazwisko: " + reader["b_person_surname"]
-                    + " |kwota: " + String.Format("{0:N2}",convertedMoney)
-                    + " |wpłata: " + reader["a_tr_pay_in"]
-                    + " |person_id: " + reader["a_tr_person_id"]
-                    + " |transaction_id: " + reader["a_tr_id"]);
+              
 
             }
             reader.Close();
 
-
+            return result;
         }
 
         public void GetTransactionByDate(string date)
