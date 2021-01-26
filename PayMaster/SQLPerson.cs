@@ -31,6 +31,7 @@ namespace PayMaster
             triggerCommand.ExecuteNonQuery();
         }
 
+        
         public void CreateTablePersons()
         {
 
@@ -63,9 +64,29 @@ namespace PayMaster
 
         }
 
-        public void GetAllPersons()
+        public bool IsPersonExist(string name, string surname)
         {
-           
+            command.CommandText = "SELECT COUNT" +
+                " (*)" +
+                " FROM persons " +
+                " WHERE " +
+                " person_name = " + "'" + name + "'" +
+                " AND person_surname = " + "'" + surname + "'";
+
+            int count = Convert.ToInt32(command.ExecuteScalar());
+
+            if(count == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public List<Person> GetAllPersons()
+        {
+            List<Person> result = new List<Person>();
+
             command.CommandText = "SELECT" +
                 " *" +
                 " FROM persons";
@@ -75,16 +96,16 @@ namespace PayMaster
 
             while (reader.Read())
             {
-               
 
-                Console.WriteLine("person_id: " + reader["person_id"]
-                    + " |imię: " + reader["person_name"]
-                    + " |nazwisko: " + reader["person_surname"]
-                    );
+                result.Add(new Person(reader["person_name"].ToString(),
+                    reader["person_surname"].ToString(),
+                    Convert.ToBoolean(reader["person_archived"])));
+                
 
             }
             reader.Close();
 
+            return result;
 
         }
 

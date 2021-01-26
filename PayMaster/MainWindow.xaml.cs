@@ -47,5 +47,12 @@ namespace PayMaster
             this.Close();
             payIn.Show();
         }
+
+        private void BtnUsers_Click(object sender, RoutedEventArgs e)
+        {
+            Payers payers = new Payers();
+            this.Close();
+            payers.Show();
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace PayMaster
             InitializeComponent();
         }
 
-        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        private void PayInBtnCancel_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             this.Close();

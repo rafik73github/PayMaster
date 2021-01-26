@@ -14,6 +14,7 @@
         <Button x:Name="BtnPayIn" Content="WPŁATA" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="220" Height="60" Click="BtnPayIn_Click"/>
         <Button x:Name="BtnPayOut" Content="WYPŁATA" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Width="220" Height="60"/>
         <Button x:Name="BtnShowRaport" Content="RAPORTY" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Width="220" Height="60"/>
+        <Button x:Name="BtnUsers" Content="PŁATNICY" HorizontalAlignment="Left" Margin="10,546,0,0" VerticalAlignment="Top" Width="220" Height="60" Click="BtnUsers_Click"/>
         <DataGrid x:Name="MainGrid" AutoGenerateColumns="False" Grid.Column="1" HorizontalAlignment="Left" Height="580" Margin="10,26,0,0" VerticalAlignment="Top" Width="932">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="100" FontSize="14" Header="DATA" Binding="{Binding TransactionDate}" >

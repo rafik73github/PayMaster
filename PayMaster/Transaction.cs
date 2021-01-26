@@ -13,9 +13,9 @@ namespace PayMaster
         public string TransactionDate { get; set; }
         public int TransactionPersonId { get; set; }
         public string TransactionPersonName { get; set; }
-        public string TransactionAmount { get; set; }
-        public string TransactionDescription { get; set; }
-        public bool TransactionPayIn { get; set; }
+        public string TransactionAmount { get; set; }  //kwota
+        public string TransactionDescription { get; set; } //opis
+        public bool TransactionPayIn { get; set; } // wpłata?
 
 
         public Transaction(int transactionId,
