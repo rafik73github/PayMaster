@@ -83,6 +83,7 @@
     <Compile Include="SQLPerson.cs" />
     <Compile Include="DatabasePatch.cs" />
     <Compile Include="SQLTransaction.cs" />
+    <Compile Include="Tools.cs" />
     <Compile Include="Transaction.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

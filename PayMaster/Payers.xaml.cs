@@ -19,12 +19,16 @@ namespace PayMaster
     /// </summary>
     public partial class Payers : Window
     {
-        SQLPerson sqlPerson = new SQLPerson();
+        private readonly SQLPerson sqlPerson = new SQLPerson();
+        
+        private string tempPersonName;
+        private string tempPersonSurname;
         public Payers()
         {
             InitializeComponent();
 
             PayersGrid.ItemsSource = sqlPerson.GetAllPersons();
+            
         }
 
         private void PayersBtnClose_Click(object sender, RoutedEventArgs e)
@@ -59,6 +63,47 @@ namespace PayMaster
 
                 PayersGrid.ItemsSource = null;
                 PayersGrid.ItemsSource = sqlPerson.GetAllPersons();
+            }
+        }
+
+        private void PayersGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            
+              Person tempPerson = PayersGrid.SelectedItem as Person;
+            if (tempPerson != null)
+            {
+                tempPersonName = tempPerson.PersonName;
+                tempPersonSurname = tempPerson.PersonSurname;
+            }
+             //MessageBox.Show(tempPerson.PersonSurname);
+
+
+        }
+
+        private void PayersGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            
+            Person person = PayersGrid.SelectedItem as Person;
+
+            if (!person.PersonName.Equals(tempPersonName) || !person.PersonSurname.Equals(tempPersonSurname))
+            {
+
+                MessageBoxResult result = MessageBox.Show("ZAPISAĆ ZMIANY?", "ZAPIS ZMIAN W TABELI PŁATNIKÓW", MessageBoxButton.OKCancel);
+                switch (result)
+                {
+                    case MessageBoxResult.OK:
+                        
+                        sqlPerson.UpdatePerson(person);
+                        break;
+                    case MessageBoxResult.Cancel:
+                        
+                        PayersGrid.ItemsSource = null;
+                        PayersGrid.ItemsSource = sqlPerson.GetAllPersons();
+                        
+                        break;
+
+                }
+
             }
         }
     }

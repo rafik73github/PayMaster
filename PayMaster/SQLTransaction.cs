@@ -47,7 +47,7 @@ namespace PayMaster
 
         public void AddTransaction(Transaction transaction)
         {
-            int amount = Convert.ToInt32(transaction.TransactionAmount);
+            int amount = Convert.ToInt32(transaction.TransactionAmount)*100;
             if(transaction.TransactionPayIn == false) { amount *= -1; }
             string sqlCommand = "INSERT INTO transactions" +
             " (tr_date, tr_person_id, tr_amount, tr_description, tr_pay_in)" +

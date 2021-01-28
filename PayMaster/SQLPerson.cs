@@ -64,6 +64,17 @@ namespace PayMaster
 
         }
 
+        public void UpdatePerson(Person person)
+        {
+            string sqlCommand = "UPDATE persons" +
+                " SET" +
+                " person_name = " + "'" + person.PersonName + "'," +
+                " person_surname = " + "'" + person.PersonSurname + "'," +
+                " person_archived = " + person.PersonArchived +
+                " WHERE person_id = " + person.PersonId;
+            ExecuteQuery(sqlCommand);
+        }
+
         public bool IsPersonExist(string name, string surname)
         {
             command.CommandText = "SELECT COUNT" +
@@ -97,7 +108,8 @@ namespace PayMaster
             while (reader.Read())
             {
 
-                result.Add(new Person(reader["person_name"].ToString(),
+                result.Add(new Person(Convert.ToInt32(reader["person_id"]),
+                    reader["person_name"].ToString(),
                     reader["person_surname"].ToString(),
                     Convert.ToBoolean(reader["person_archived"])));
                 
