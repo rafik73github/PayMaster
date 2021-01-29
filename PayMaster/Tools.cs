@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace PayMaster
 {
@@ -10,14 +12,17 @@ namespace PayMaster
     {
 
 
-        public bool isDateValidate (string str)
+        public static void NoSpaceTextbox(object sender, KeyEventArgs e)
         {
-            DateTime x = Convert.ToDateTime(str);
-            
-
-            return true;
+            e.Handled = e.Key == Key.Space;
         }
 
+        public static void NumberValidatinTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"[^0-9,]+");
+            e.Handled = regex.IsMatch(e.Text);
+
+        }
 
     }
 }

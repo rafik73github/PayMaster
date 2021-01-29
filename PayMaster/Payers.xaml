@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PayMaster"
         mc:Ignorable="d"
-        Title="PŁATNICY" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="PŁATNICY" Height="720" Width="680" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label x:Name="LblAddPayerTitle" Content="DODAWANIE PŁATNIKA" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold"/>
-        <Label x:Name="LblAddPayerName" Content="IMIĘ:" HorizontalAlignment="Left" Margin="25,56,0,0" VerticalAlignment="Top" Width="134"/>
-        <TextBox x:Name="TxtAddPayerName" HorizontalAlignment="Left" Height="23" Margin="165,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
-        <Label x:Name="LblAddPayerSurname" Content="NAZWISKO:" HorizontalAlignment="Left" Margin="26,87,0,0" VerticalAlignment="Top" Width="134"/>
-        <TextBox x:Name="TxtAddPayerSurname" HorizontalAlignment="Left" Height="23" Margin="165,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
-        <Button x:Name="PayersBtnSave" Content="ZAPISZ" HorizontalAlignment="Left" Margin="26,140,0,0" VerticalAlignment="Top" Width="220" Height="60" Click="PayersBtnSave_Click"/>
-        <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="200" Margin="10,18,0,0" VerticalAlignment="Top" Width="320" Panel.ZIndex="-1"/>
-        <Button x:Name="PayersBtnClose" Content="ZAMKNIJ" HorizontalAlignment="Left" Margin="26,332,0,0" VerticalAlignment="Top" Width="220" Height="60" Click="PayersBtnClose_Click"/>
+        <Label x:Name="LblAddPayerName" Content="IMIĘ:" HorizontalAlignment="Left" Margin="25,65,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="TxtAddPayerName" HorizontalAlignment="Left" Height="23" Margin="125,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
+        <Label x:Name="LblAddPayerSurname" Content="NAZWISKO:" HorizontalAlignment="Left" Margin="25,100,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="TxtAddPayerSurname" HorizontalAlignment="Left" Height="23" Margin="125,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
+        <Button x:Name="PayersBtnSave" Content="ZAPISZ" HorizontalAlignment="Left" Margin="400,65,0,0" VerticalAlignment="Top" Width="220" Height="60" Click="PayersBtnSave_Click"/>
+        <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="140" Margin="10,10,0,0" VerticalAlignment="Top" Width="645" Panel.ZIndex="-1"/>
+        <Button x:Name="PayersBtnClose" Content="ZAMKNIJ" HorizontalAlignment="Left" Margin="212,603,0,0" VerticalAlignment="Top" Width="220" Height="60" Click="PayersBtnClose_Click"/>
 
-        <Label x:Name="LblPayerListTitle" Content="LISTA PŁATNIKÓW" HorizontalAlignment="Left" Margin="368,25,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold"/>
-        <DataGrid x:Name="PayersGrid" RowEditEnding="PayersGrid_RowEditEnding" AutoGenerateColumns="False" Grid.Column="1" HorizontalAlignment="Left" Height="336" Margin="354,56,0,0" SelectedCellsChanged="PayersGrid_SelectedCellsChanged" VerticalAlignment="Top" Width="416">
+        <Label x:Name="LblPayerListTitle" Content="LISTA PŁATNIKÓW" HorizontalAlignment="Left" Margin="25,192,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold"/>
+        <DataGrid x:Name="PayersGrid" RowEditEnding="PayersGrid_RowEditEnding" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="336" Margin="25,233,0,0" SelectedCellsChanged="PayersGrid_SelectedCellsChanged" VerticalAlignment="Top" Width="615">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="200" FontSize="14" Header="IMIĘ" Binding="{Binding PersonName, UpdateSourceTrigger=PropertyChanged}" >
                     <DataGridTextColumn.HeaderStyle>
@@ -47,5 +47,6 @@
 
             </DataGrid.Columns>
         </DataGrid>
+        <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="406" Margin="10,178,0,0" VerticalAlignment="Top" Width="645" Panel.ZIndex="-1"/>
     </Grid>
 </Window>

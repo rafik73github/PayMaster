@@ -30,8 +30,9 @@ namespace PayMaster
             ComboBoxAddTransactionPayer.ItemsSource = person;
             ComboBoxAddTransactionPayer.SelectedValuePath = "PersonId";
 
-            
-            
+            TxtAddTransactionAmount.PreviewKeyDown += Tools.NoSpaceTextbox;
+            TxtAddTransactionAmount.PreviewTextInput += Tools.NumberValidatinTextBox;
+
         }
 
         
@@ -40,11 +41,13 @@ namespace PayMaster
         {
             Person person = ComboBoxAddTransactionPayer.SelectedItem as Person;
             string test = person.PersonId.ToString();
+            
            // MessageBox.Show(test);
         }
 
         private void PayInBtnOk_Click(object sender, RoutedEventArgs e)
         {
+            
             if (!PayInDatePicker.Text.Equals("") && ComboBoxAddTransactionPayer.SelectedItem != null && !TxtAddTransactionAmount.Text.Trim().Equals(""))
             {
                 string transactionDate = Convert.ToDateTime(PayInDatePicker.Text.Trim()).ToString("yyyy-MM-dd");
@@ -54,13 +57,29 @@ namespace PayMaster
                 string transactionDescription = TxtAddTransactionDescription.Text.Trim().ToUpper();
                 bool transactionPayIn = true;
 
-                sqlTransaction.AddTransaction(new Transaction(transactionDate, transactionPersonId, transactionAmount, transactionDescription, transactionPayIn));
+                Regex regex = new Regex(@"^[0-9]{1,5}\,?[0-9]{2}$");
+                if (!regex.IsMatch(transactionAmount))
+                {
+                    MessageBox.Show("NIEPOPRAWNY FORMAT W POLU 'KWOTA'");
+                }
+                else
+                {
+                    double test = Convert.ToDouble(transactionAmount);
+                    int test1 = Convert.ToInt32(test*100);
+                    double test2 = (Convert.ToDouble(test1))/100;
+                    MessageBox.Show(test2.ToString());
+                }
+                
 
-                MainWindow mainWindow = new MainWindow();
-                this.Close();
-                mainWindow.Show();
+                // sqlTransaction.AddTransaction(new Transaction(transactionDate, transactionPersonId, transactionAmount, transactionDescription, transactionPayIn));
+
+                //  MainWindow mainWindow = new MainWindow();
+                //  this.Close();
+                //  mainWindow.Show();
                 // MessageBox.Show(transactionAmount);
             }
+            
+            
         }
 
         private void PayInBtnCancel_Click(object sender, RoutedEventArgs e)
@@ -69,11 +88,6 @@ namespace PayMaster
             this.Close();
             mainWindow.Show();
         }
-
-        private void NumberValidatinTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9.]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
+        
     }
 }

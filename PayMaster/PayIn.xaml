@@ -5,19 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PayMaster"
         mc:Ignorable="d"
-        Title="WPŁATA" Height="348.181" Width="672.727" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="WPŁATA" Height="350" Width="680" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="82*"/>
-            <ColumnDefinition Width="306*"/>
-            <ColumnDefinition Width="279*"/>
-        </Grid.ColumnDefinitions>
+        <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="289" Margin="10,10,0,0" VerticalAlignment="Top" Width="645" Panel.ZIndex="-1"/>
         <Label x:Name="LblAddPayerTitle" Content="WPŁATA GOTÓWKI" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" Grid.ColumnSpan="2"/>
-        <Label x:Name="LblAddTransactionDate" Content="DATA:" HorizontalAlignment="Left" Margin="26,56,0,0" VerticalAlignment="Top" Width="134" Grid.ColumnSpan="2"/>
-        <Label x:Name="LblAddTransactionPayer" Content="PŁATNIK:" HorizontalAlignment="Left" Margin="26,87,0,0" VerticalAlignment="Top" Width="134" Grid.ColumnSpan="2"/>
-        <Label x:Name="LblAddTransactionAmount" Content="KWOTA:" HorizontalAlignment="Left" Margin="26,118,0,0" VerticalAlignment="Top" Width="134" Grid.ColumnSpan="2"/>
-        <Label x:Name="LblAddTransactionDescription" Content="OPIS:" HorizontalAlignment="Left" Margin="26,149,0,0" VerticalAlignment="Top" Width="134" Grid.ColumnSpan="2"/>
-        <ComboBox x:Name="ComboBoxAddTransactionPayer" HorizontalAlignment="Left" Margin="83.455,91,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="ComboBoxAddTransactionPayer_SelectionChanged" Grid.Column="1">
+        <Label x:Name="LblAddTransactionDate" Content="DATA:" HorizontalAlignment="Left" Margin="25,65,0,0" VerticalAlignment="Top" Width="100"/>
+        <DatePicker x:Name="PayInDatePicker" HorizontalAlignment="Left"  Margin="125,65,0,0" VerticalAlignment="Top" Width="220" SelectedDateFormat="Short" DisplayDate="2021-01-28" />
+        <Label x:Name="LblAddTransactionPayer" Content="PŁATNIK:" HorizontalAlignment="Left" Margin="25,100,0,0" VerticalAlignment="Top" Width="100"/>
+        <ComboBox x:Name="ComboBoxAddTransactionPayer" HorizontalAlignment="Left" Margin="125,100,0,0" VerticalAlignment="Top" Width="220" SelectionChanged="ComboBoxAddTransactionPayer_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -27,12 +22,12 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBox x:Name="TxtAddTransactionAmount" PreviewTextInput="NumberValidatinTextBox" HorizontalAlignment="Left" TextAlignment="Right" Height="23" Margin="83.455,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.Column="1"/>
-        <TextBox x:Name="TxtAddTransactionDescription" HorizontalAlignment="Left" Height="23" Margin="83.455,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="458" Grid.ColumnSpan="2" Grid.Column="1"/>
-        <Button x:Name="PayInBtnOk" Content="ZAPISZ" HorizontalAlignment="Left" Margin="83.455,200,0,0" VerticalAlignment="Top" Width="220"  Height="60" Click="PayInBtnOk_Click" Grid.Column="1"/>
-        <Button x:Name="PayInBtnCancel" Content="ANULUJ" HorizontalAlignment="Left" Margin="15,200,0,0" VerticalAlignment="Top" Width="220" Click="PayInBtnCancel_Click" Height="60" Grid.Column="2"/>
+        <Label x:Name="LblAddTransactionAmount" Content="KWOTA:" HorizontalAlignment="Left" Margin="25,135,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="TxtAddTransactionAmount" HorizontalAlignment="Left" TextAlignment="Right" Height="23" Margin="125,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220"/>
+        <Label x:Name="LblAddTransactionDescription" Content="OPIS:" HorizontalAlignment="Left" Margin="25,170,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="TxtAddTransactionDescription" HorizontalAlignment="Left" Height="23" Margin="125,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470"/>
+        <Button x:Name="PayInBtnOk" Content="ZAPISZ" HorizontalAlignment="Left" Margin="125,215,0,0" VerticalAlignment="Top" Width="220"  Height="60" Click="PayInBtnOk_Click"/>
+        <Button x:Name="PayInBtnCancel" Content="ANULUJ" HorizontalAlignment="Left" Margin="375,215,0,0" VerticalAlignment="Top" Width="220" Click="PayInBtnCancel_Click" Height="60"/>
 
-        <DatePicker x:Name="PayInDatePicker" HorizontalAlignment="Left"  Margin="83.455,56,0,0" VerticalAlignment="Top" Width="150" SelectedDateFormat="Short" DisplayDate="2021-01-28" Grid.Column="1" />
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="267" Margin="12,22,0,0" VerticalAlignment="Top" Width="630" Panel.ZIndex="-1" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>
