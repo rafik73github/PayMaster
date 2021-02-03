@@ -80,6 +80,9 @@
     <Compile Include="PayIn.xaml.cs">
       <DependentUpon>PayIn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PayOut.xaml.cs">
+      <DependentUpon>PayOut.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SQLPerson.cs" />
     <Compile Include="DatabasePatch.cs" />
     <Compile Include="SQLTransaction.cs" />
@@ -102,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PayIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PayOut.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

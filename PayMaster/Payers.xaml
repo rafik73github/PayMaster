@@ -17,7 +17,7 @@
         <Button x:Name="PayersBtnClose" Content="ZAMKNIJ" HorizontalAlignment="Left" Margin="212,603,0,0" VerticalAlignment="Top" Width="220" Height="60" Click="PayersBtnClose_Click"/>
 
         <Label x:Name="LblPayerListTitle" Content="LISTA PŁATNIKÓW" HorizontalAlignment="Left" Margin="25,192,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold"/>
-        <DataGrid x:Name="PayersGrid" RowEditEnding="PayersGrid_RowEditEnding" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="336" Margin="25,233,0,0" SelectedCellsChanged="PayersGrid_SelectedCellsChanged" VerticalAlignment="Top" Width="615">
+        <DataGrid x:Name="PayersGrid" RowEditEnding="PayersGrid_RowEditEnding" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="336" Margin="25,233,0,0" SelectedCellsChanged="PayersGrid_SelectedCellsChanged" VerticalAlignment="Top" Width="615" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="200" FontSize="14" Header="IMIĘ" Binding="{Binding PersonName, UpdateSourceTrigger=PropertyChanged}" >
                     <DataGridTextColumn.HeaderStyle>

@@ -13,7 +13,7 @@ namespace PayMaster
         public string TransactionDate { get; set; }
         public int TransactionPersonId { get; set; }
         public string TransactionPersonName { get; set; }
-        public string TransactionAmount { get; set; }  //kwota
+        public double TransactionAmount { get; set; }  //kwota
         public string TransactionDescription { get; set; } //opis
         public bool TransactionPayIn { get; set; } // wpłata?
 
@@ -22,7 +22,7 @@ namespace PayMaster
             string transactionDate,
             int transactionPersonId,
             string transactionPersonName,
-            string transactionAmount,
+            double transactionAmount,
             string transactionDescription,
             bool transactionPayIn)
         {
@@ -38,7 +38,7 @@ namespace PayMaster
         public Transaction(string transactionDate,
             int transactionPersonId,
             string transactionPersonName,
-            string transactionAmount,
+            double transactionAmount,
             string transactionDescription,
             bool transactionPayIn)
         {
@@ -52,7 +52,7 @@ namespace PayMaster
 
         public Transaction(string transactionDate,
             int transactionPersonId,
-            string transactionAmount,
+            double transactionAmount,
             string transactionDescription,
             bool transactionPayIn)
         {

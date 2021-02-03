@@ -47,7 +47,7 @@ namespace PayMaster
 
         public void AddTransaction(Transaction transaction)
         {
-            int amount = Convert.ToInt32(transaction.TransactionAmount)*100;
+            int amount = Convert.ToInt32(transaction.TransactionAmount * 100);
             if(transaction.TransactionPayIn == false) { amount *= -1; }
             string sqlCommand = "INSERT INTO transactions" +
             " (tr_date, tr_person_id, tr_amount, tr_description, tr_pay_in)" +
@@ -84,12 +84,13 @@ namespace PayMaster
 
             while (reader.Read())
             {
-                convertedMoney = Convert.ToDouble(reader["a_tr_amount"]) / 100;
+                convertedMoney = (Convert.ToDouble(reader["a_tr_amount"])) / 100;
+
                 result.Add(new Transaction(Convert.ToInt32(reader["a_tr_id"]),
                                            reader["a_tr_date"].ToString(),
                                            Convert.ToInt32(reader["a_tr_person_id"]),
                                            reader["b_person_surname"].ToString() + " " + reader["b_person_name"].ToString(),
-                                           String.Format("{0:N2}", convertedMoney),
+                                           convertedMoney,
                                            reader["a_tr_description"].ToString(),
                                            Convert.ToBoolean(reader["a_tr_pay_in"])));
 
@@ -121,12 +122,12 @@ namespace PayMaster
 
             while (reader.Read())
             {
-                convertedMoney = Convert.ToDouble(reader["a_tr_amount"]) / 100;
+                convertedMoney = (Convert.ToDouble(reader["a_tr_amount"])) / 100;
 
                 Console.WriteLine("data: " + reader["a_tr_date"]
                     + " |imię: " + reader["b_person_name"]
                     + " |nazwisko: " + reader["b_person_surname"]
-                    + " |kwota: " + String.Format("{0:N2}", convertedMoney)
+                    + " |kwota: " + convertedMoney
                     + " |wpłata: " + reader["a_tr_pay_in"]
                     + " |person_id: " + reader["a_tr_person_id"]
                     + " |transaction_id: " + reader["a_tr_id"]);
@@ -157,12 +158,12 @@ namespace PayMaster
 
             while (reader.Read())
             {
-                convertedMoney = Convert.ToDouble(reader["a_tr_amount"]) / 100;
+                convertedMoney = (Convert.ToDouble(reader["a_tr_amount"])) / 100;
 
                 Console.WriteLine("data: " + reader["a_tr_date"]
                     + " |imię: " + reader["b_person_name"]
                     + " |nazwisko: " + reader["b_person_surname"]
-                    + " |kwota: " + String.Format("{0:N2}", convertedMoney)
+                    + " |kwota: " + convertedMoney
                     + " |wpłata: " + reader["a_tr_pay_in"]
                     + " |person_id: " + reader["a_tr_person_id"]
                     + " |transaction_id: " + reader["a_tr_id"]);
@@ -193,12 +194,12 @@ namespace PayMaster
 
             while (reader.Read())
             {
-                convertedMoney = Convert.ToDouble(reader["a_tr_amount"]) / 100;
+                convertedMoney = (Convert.ToDouble(reader["a_tr_amount"])) / 100;
 
                 Console.WriteLine("data: " + reader["a_tr_date"]
                     + " |imię: " + reader["b_person_name"]
                     + " |nazwisko: " + reader["b_person_surname"]
-                    + " |kwota: " + String.Format("{0:N2}", convertedMoney)
+                    + " |kwota: " + convertedMoney
                     + " |wpłata: " + reader["a_tr_pay_in"]
                     + " |person_id: " + reader["a_tr_person_id"]
                     + " |transaction_id: " + reader["a_tr_id"]);

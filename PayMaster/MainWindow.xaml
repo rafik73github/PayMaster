@@ -12,10 +12,10 @@
             <ColumnDefinition Width="119*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="BtnPayIn" Content="WPŁATA" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="220" Height="60" Click="BtnPayIn_Click"/>
-        <Button x:Name="BtnPayOut" Content="WYPŁATA" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Width="220" Height="60"/>
+        <Button x:Name="BtnPayOut" Content="WYPŁATA" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Width="220" Height="60" Click="BtnPayOut_Click"/>
         <Button x:Name="BtnShowRaport" Content="RAPORTY" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Width="220" Height="60"/>
         <Button x:Name="BtnUsers" Content="PŁATNICY" HorizontalAlignment="Left" Margin="10,546,0,0" VerticalAlignment="Top" Width="220" Height="60" Click="BtnUsers_Click"/>
-        <DataGrid x:Name="MainGrid" AutoGenerateColumns="False" Grid.Column="1" HorizontalAlignment="Left" Height="580" Margin="10,26,0,0" VerticalAlignment="Top" Width="932">
+        <DataGrid x:Name="MainGrid" AutoGenerateColumns="False" Grid.Column="1" HorizontalAlignment="Left" Height="580" Margin="10,26,0,0" VerticalAlignment="Top" Width="932" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="100" FontSize="14" Header="DATA" Binding="{Binding TransactionDate}" >
                     <DataGridTextColumn.HeaderStyle>
@@ -41,7 +41,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Width="100" FontSize="14" Header="KWOTA" Binding="{Binding TransactionAmount}" >
+                <DataGridTextColumn Width="100" FontSize="14" Header="KWOTA" Binding="{Binding TransactionAmount, StringFormat={}{0:c}, ConverterCulture=pl-PL}" >
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -49,11 +49,14 @@
                     </DataGridTextColumn.HeaderStyle>
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
-                            <Setter Property="TextAlignment" Value="Center" />
+                            <Setter Property="TextAlignment" Value="Right" />
+                            <Setter Property="Padding" Value="0,0,3,0"/>
+                            
                         </Style>
+                        
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Width="529" FontSize="14" Header="OPIS" Binding="{Binding TransactionDescription}" >
+                <DataGridTextColumn Width="525" FontSize="14" Header="OPIS" Binding="{Binding TransactionDescription}" >
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
