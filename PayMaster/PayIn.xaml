@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PayMaster"
         mc:Ignorable="d"
-        Title="WPŁATA" Height="350" Width="680" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="WPŁATA" Height="400" Width="680" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="289" Margin="10,10,0,0" VerticalAlignment="Top" Width="645" Panel.ZIndex="-1"/>
+        <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="337" Margin="10,10,0,0" VerticalAlignment="Top" Width="645" Panel.ZIndex="-1"/>
+
+
         <Label x:Name="LblAddPayerTitle" Content="WPŁATA GOTÓWKI" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" Grid.ColumnSpan="2"/>
         <Label x:Name="LblAddTransactionDate" Content="DATA:" HorizontalAlignment="Left" Margin="25,65,0,0" VerticalAlignment="Top" Width="100"/>
         <DatePicker x:Name="PayInDatePicker" HorizontalAlignment="Left"  Margin="125,65,0,0" VerticalAlignment="Top" Width="220" SelectedDateFormat="Short" DisplayDate="2021-01-28" />
@@ -18,16 +20,28 @@
                     <TextBlock>
                         <Run Text="{Binding PersonName}"/>
                         <Run Text="{Binding PersonSurname}"/>
+                        <Run Text="{Binding PersonNick}"/>
                     </TextBlock>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
         <Label x:Name="LblAddTransactionAmount" Content="KWOTA:" HorizontalAlignment="Left" Margin="25,135,0,0" VerticalAlignment="Top" Width="100"/>
         <TextBox x:Name="TxtAddTransactionAmount" HorizontalAlignment="Left" TextAlignment="Right" Height="23" Margin="125,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220"/>
-        <Label x:Name="LblAddTransactionDescription" Content="OPIS:" HorizontalAlignment="Left" Margin="25,170,0,0" VerticalAlignment="Top" Width="100"/>
-        <TextBox x:Name="TxtAddTransactionDescription" HorizontalAlignment="Left" Height="23" Margin="125,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470"/>
-        <Button x:Name="PayInBtnOk" Content="ZAPISZ" HorizontalAlignment="Left" Margin="125,215,0,0" VerticalAlignment="Top" Width="220"  Height="60" Click="PayInBtnOk_Click"/>
-        <Button x:Name="PayInBtnCancel" Content="ANULUJ" HorizontalAlignment="Left" Margin="375,215,0,0" VerticalAlignment="Top" Width="220" Click="PayInBtnCancel_Click" Height="60"/>
+        <Label x:Name="LblAddTransactionTarget" Content="CEL:" HorizontalAlignment="Left" Margin="25,170,0,0" VerticalAlignment="Top" Width="100"/>
+        <ComboBox x:Name="ComboBoxAddTransactionTarget" HorizontalAlignment="Left" Margin="125,170,0,0" VerticalAlignment="Top" Width="470" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding PayTargetText}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label x:Name="LblAddTransactionDescription" Content="OPIS:" HorizontalAlignment="Left" Margin="25,205,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="TxtAddTransactionDescription" HorizontalAlignment="Left" Height="23" Margin="125,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470"/>
+        <Button x:Name="PayInBtnOk" Content="ZAPISZ" HorizontalAlignment="Left" Margin="125,263,0,0" VerticalAlignment="Top" Width="220"  Height="60" Click="PayInBtnOk_Click"/>
+        <Button x:Name="PayInBtnCancel" Content="ZAMKNIJ" HorizontalAlignment="Left" Margin="375,263,0,0" VerticalAlignment="Top" Width="220" Click="PayInBtnCancel_Click" Height="60"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="495,58,0,0" VerticalAlignment="Top" Width="100" Source="money_plus_64x64.png"/>
 
     </Grid>
 </Window>

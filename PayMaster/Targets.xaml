@@ -1,0 +1,40 @@
+﻿<Window x:Class="PayMaster.Targets"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PayMaster"
+        mc:Ignorable="d"
+        Title="CELE" Height="720" Width="680" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="204" Margin="10,10,0,0" VerticalAlignment="Top" Width="645" Panel.ZIndex="-1"/>
+
+        <Label x:Name="LblAddTargetTitle" Content="CELE OPERACJI" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" Grid.ColumnSpan="2"/>
+
+        <Label x:Name="LblAddTarget" Content="CEL:" HorizontalAlignment="Left" Margin="25,65,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="TxtAddTarget" HorizontalAlignment="Left" Height="23" Margin="125,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="470"/>
+        <Button x:Name="TargetBtnSave" Content="ZAPISZ" HorizontalAlignment="Left" Margin="125,106,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="TargetBtnSave_Click"/>
+
+        <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="362" Margin="10,219,0,0" VerticalAlignment="Top" Width="645" Panel.ZIndex="-1"/>
+
+        <DataGrid x:Name="TargetsGrid" RowEditEnding="TargetsGrid_RowEditEnding" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="336" Margin="25,233,0,0" SelectedCellsChanged="TargetsGrid_SelectedCellsChanged" VerticalAlignment="Top" Width="615" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="612" FontSize="14" Header="CEL OPERACJI" Binding="{Binding PayTargetText, UpdateSourceTrigger=PropertyChanged}" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="TargetBtnClose" Content="ZAMKNIJ" HorizontalAlignment="Left" Margin="262,603,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="TargetBtnClose_Click" />
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="495,99,0,0" VerticalAlignment="Top" Width="100" Source="target_64x64.png"/>
+    </Grid>
+</Window>

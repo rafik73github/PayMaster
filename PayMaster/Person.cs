@@ -12,20 +12,23 @@ namespace PayMaster
         public int PersonId { get; set; }
         public string PersonName { get; set; }
         public string PersonSurname { get; set; }
+        public string PersonNick { get; set; }
         public bool PersonArchived { get; set; }
 
-        public Person(int personId, string personName, string personSurname, bool personArchived)
+        public Person(int personId, string personName, string personSurname, string personNick, bool personArchived)
         {
             this.PersonId = personId;
             this.PersonName = personName;
             this.PersonSurname = personSurname;
+            this.PersonNick = personNick;
             this.PersonArchived = personArchived;
         }
 
-        public Person(string personName, string personSurname, bool personArchived)
+        public Person(string personName, string personSurname, string personNick, bool personArchived)
         {
             this.PersonName = personName;
             this.PersonSurname = personSurname;
+            this.PersonNick = personNick;
             this.PersonArchived = personArchived;
         }
 

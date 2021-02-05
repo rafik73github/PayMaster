@@ -56,6 +56,7 @@
     <Reference Include="System.Data.SQLite.Linq, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.113.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -74,6 +75,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AccountBalance.cs" />
     <Compile Include="Payers.xaml.cs">
       <DependentUpon>Payers.xaml</DependentUpon>
     </Compile>
@@ -83,9 +85,14 @@
     <Compile Include="PayOut.xaml.cs">
       <DependentUpon>PayOut.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PayTarget.cs" />
+    <Compile Include="SQLPayTarget.cs" />
     <Compile Include="SQLPerson.cs" />
     <Compile Include="DatabasePatch.cs" />
     <Compile Include="SQLTransaction.cs" />
+    <Compile Include="Targets.xaml.cs">
+      <DependentUpon>Targets.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools.cs" />
     <Compile Include="Transaction.cs" />
     <Page Include="MainWindow.xaml">
@@ -109,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PayOut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Targets.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,6 +151,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money_minus_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money_plus_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="money_plus_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="money_minus_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\target_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="target_64x64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

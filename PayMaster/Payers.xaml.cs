@@ -23,12 +23,13 @@ namespace PayMaster
         
         private string tempPersonName;
         private string tempPersonSurname;
+        private string tempPersonNick;
         public Payers()
         {
             InitializeComponent();
 
             PayersGrid.ItemsSource = sqlPerson.GetAllPersons();
-            
+            TxtAddPayerSurname.PreviewTextInput += Tools.LetterValidatinTextBox;
         }
 
         private void PayersBtnClose_Click(object sender, RoutedEventArgs e)
@@ -42,24 +43,37 @@ namespace PayMaster
         {
             string payerAddNameText = TxtAddPayerName.Text.Trim().ToUpper();
             string payerAddSurnameText = TxtAddPayerSurname.Text.Trim().ToUpper();
+            string payerAddNickText = TxtAddPayerNick.Text.Trim().ToUpper();
+
+            string[] payerNameSolo = payerAddNameText.Split(' ');
+            string[] payerSurnameSolo = payerAddSurnameText.Split(' ');
 
             
             if (payerAddNameText.Equals("") || payerAddSurnameText.Equals("")){
 
-                MessageBox.Show("WYPEŁNIJ WSZYSTKIE POLA !");
+                MessageBox.Show("POLA 'IMIĘ' I 'NAZWISKO'\nMUSZĄ BYĆ WYPEŁNIONE\nPOLE 'PSEUDONIM' NIE JEST OBOWIĄZKOWE");
               
 
             }
-            else if(sqlPerson.IsPersonExist(payerAddNameText, payerAddSurnameText))
+            else if (payerNameSolo.Length > 1)
+            {
+                MessageBox.Show("WPISZ POJEDYŃCZE IMIĘ");
+            }
+            else if (payerSurnameSolo.Length > 1)
+            {
+                MessageBox.Show("WPISZ POJEDYŃCZE NAZWISKO\nJEŚLI JEST WIELOCZŁONOWE,\nODDZIEL JE MYŚLNIKIEM");
+            }
+            else if(sqlPerson.IsPersonExist(payerAddNameText, payerAddSurnameText, payerAddNickText))
             {
                 MessageBox.Show("TAKI PŁATNIK JUŻ ISTNIEJE");
             }
             else
             {
-                sqlPerson.AddPerson(new Person(payerAddNameText, payerAddSurnameText, false));
+                sqlPerson.AddPerson(new Person(payerAddNameText, payerAddSurnameText, payerAddNickText, false));
 
                 TxtAddPayerName.Text = "";
                 TxtAddPayerSurname.Text = "";
+                TxtAddPayerNick.Text = "";
 
                 PayersGrid.ItemsSource = null;
                 PayersGrid.ItemsSource = sqlPerson.GetAllPersons();
@@ -74,6 +88,8 @@ namespace PayMaster
             {
                 tempPersonName = tempPerson.PersonName;
                 tempPersonSurname = tempPerson.PersonSurname;
+                tempPersonNick = tempPerson.PersonNick;
+
             }
              //MessageBox.Show(tempPerson.PersonSurname);
 
@@ -85,7 +101,7 @@ namespace PayMaster
             
             Person person = PayersGrid.SelectedItem as Person;
 
-            if (!person.PersonName.Equals(tempPersonName) || !person.PersonSurname.Equals(tempPersonSurname))
+            if (!person.PersonName.Equals(tempPersonName) || !person.PersonSurname.Equals(tempPersonSurname) || !person.PersonNick.Equals(tempPersonNick))
             {
 
                 MessageBoxResult result = MessageBox.Show("ZAPISAĆ ZMIANY?", "ZAPIS ZMIAN W TABELI PŁATNIKÓW", MessageBoxButton.OKCancel);
@@ -94,6 +110,8 @@ namespace PayMaster
                     case MessageBoxResult.OK:
                         
                         sqlPerson.UpdatePerson(person);
+                        PayersGrid.ItemsSource = null;
+                        PayersGrid.ItemsSource = sqlPerson.GetAllPersons();
                         break;
                     case MessageBoxResult.Cancel:
                         

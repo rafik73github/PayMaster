@@ -22,6 +22,7 @@ namespace PayMaster
     {
         private readonly SQLPerson sqlPerson = new SQLPerson();
         private readonly SQLTransaction sqlTransaction = new SQLTransaction();
+        private readonly SQLPayTarget sqlPayTarget = new SQLPayTarget();
         public PayIn()
         {
             InitializeComponent();
@@ -29,6 +30,9 @@ namespace PayMaster
             List<Person> person = sqlPerson.GetAllPersons();
             ComboBoxAddTransactionPayer.ItemsSource = person;
             ComboBoxAddTransactionPayer.SelectedValuePath = "PersonId";
+
+            List<PayTarget> target = sqlPayTarget.GetAllPayTargets();
+            ComboBoxAddTransactionTarget.ItemsSource = target;
 
             TxtAddTransactionAmount.PreviewKeyDown += Tools.NoSpaceTextbox;
             TxtAddTransactionAmount.PreviewTextInput += Tools.NumberValidatinTextBox;
@@ -47,18 +51,23 @@ namespace PayMaster
 
         private void PayInBtnOk_Click(object sender, RoutedEventArgs e)
         {
-            double transactionAmount = 0;
-            if (!PayInDatePicker.Text.Equals("") && ComboBoxAddTransactionPayer.SelectedItem != null && !TxtAddTransactionAmount.Text.Trim().Equals(""))
+            double transactionAmount;
+            if (!PayInDatePicker.Text.Equals("") 
+                && ComboBoxAddTransactionPayer.SelectedItem != null
+                && ComboBoxAddTransactionTarget.SelectedItem != null
+                && !TxtAddTransactionAmount.Text.Trim().Equals(""))
             {
                 string transactionDate = Convert.ToDateTime(PayInDatePicker.Text.Trim()).ToString("yyyy-MM-dd");
                 Person person = ComboBoxAddTransactionPayer.SelectedItem as Person;
                 int transactionPersonId = person.PersonId;
                 string transactionAmountTxt = TxtAddTransactionAmount.Text;
+                PayTarget payTarget = ComboBoxAddTransactionTarget.SelectedItem as PayTarget;
+                int transactionTarget = payTarget.PayTargetId;
                 string transactionDescription = TxtAddTransactionDescription.Text.Trim().ToUpper();
                 bool transactionPayIn = true;
 
                 Regex regex = new Regex(@"^[0-9]{1,5}\,?([0-9]{1,2})?$");
-               // Regex regex = new Regex(@"^[0-9]{1,5}\,?[0-9]{2}$");
+               
                 if (!regex.IsMatch(transactionAmountTxt))
                 {
                     MessageBox.Show("NIEPOPRAWNY FORMAT W POLU 'KWOTA'");
@@ -66,21 +75,28 @@ namespace PayMaster
                 else
                 {
                     transactionAmount = Convert.ToDouble(transactionAmountTxt);
-                    sqlTransaction.AddTransaction(new Transaction(transactionDate, transactionPersonId, transactionAmount, transactionDescription, transactionPayIn));
+                    sqlTransaction.AddTransaction(new Transaction(
+                        transactionDate,
+                        transactionPersonId,
+                        transactionAmount,
+                        transactionDescription,
+                        transactionTarget,
+                        transactionPayIn
+                        ));
 
                     PayInDatePicker.Text = "";
                     ComboBoxAddTransactionPayer.SelectedItem = null;
+                    ComboBoxAddTransactionTarget.SelectedItem = null;
                     TxtAddTransactionAmount.Text = "";
                     TxtAddTransactionDescription.Text = "";
+                    MessageBox.Show("ZAKSIĘGOWANO WPŁATĘ: " + transactionAmount.ToString() + " ZŁ");
                 }
                 
 
-                 
-
-                //  MainWindow mainWindow = new MainWindow();
-                //  this.Close();
-                //  mainWindow.Show();
-                // MessageBox.Show(transactionAmount);
+            }
+            else
+            {
+                MessageBox.Show("WYPEŁNIJ WSZYSTKIE POLA!\nPOLE 'OPIS' NIE JEST OBOWIĄZKOWE");
             }
             
             

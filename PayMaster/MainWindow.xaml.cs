@@ -23,37 +23,24 @@ namespace PayMaster
 
         SQLPerson sqlPerson = new SQLPerson();
         SQLTransaction sqlTransaction = new SQLTransaction();
+        SQLPayTarget sqlPayTarget = new SQLPayTarget();
+
         public MainWindow()
         {
+            
             InitializeComponent();
 
             sqlPerson.CreateTablePersons();
             sqlTransaction.CreateTableTransactions();
-
-            int x = 1022;
-
-
-            double y = (Convert.ToDouble(x))/100;
-            int z = Convert.ToInt32(y*100);
-
-            string str = "10";
-
-            
-            int i = Convert.ToInt32((Convert.ToDouble(str)) * 100);
+            sqlPayTarget.CreateTablePayTarget();
             //MessageBox.Show(i.ToString());
-
-            //sqlPerson.AddPerson(new Person("Mirek", "Świrek", false));
-            // sqlPerson.GetAllPersons();
-
-
-            //sqlTransaction.AddTransaction(new Transaction("2020-11-01", 3, "650","wypłata", false));
-
-            // sqlTransaction.GetTransactionByPayment(false);
-
-            MainGrid.ItemsSource = sqlTransaction.GetAllTransactionList();
             
+            MainGrid.ItemsSource = sqlTransaction.GetAllTransactionList();
+
+            DataContext = new AccountBalance();
         }
 
+       
         private void BtnPayIn_Click(object sender, RoutedEventArgs e)
         {
             PayIn payIn = new PayIn();
@@ -73,6 +60,13 @@ namespace PayMaster
             PayOut payOut = new PayOut();
             this.Close();
             payOut.Show();
+        }
+
+        private void BtnTargets_Click(object sender, RoutedEventArgs e)
+        {
+            Targets targets = new Targets();
+            this.Close();
+            targets.Show();
         }
     }
 }

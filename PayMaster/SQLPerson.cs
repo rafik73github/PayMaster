@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SQLite;
 
 namespace PayMaster
@@ -20,8 +17,7 @@ namespace PayMaster
             sqlConnection.Open();
             command = sqlConnection.CreateCommand();
         }
-
-        
+       
 
         public void ExecuteQuery(string sqlCommand)
         {
@@ -40,49 +36,54 @@ namespace PayMaster
             "person_id INTEGER PRIMARY KEY AUTOINCREMENT," +
             " person_name STRING," +
             " person_surname STRING," +
+            " person_nick STRING," +
             " person_archived BOOLEAN" +
             ")";
             ExecuteQuery(sqlCommand);
 
 
         }
-
-
-
         
 
         public void AddPerson(Person person)
         {
            
             string sqlCommand = "INSERT INTO persons" +
-            " (person_name, person_surname, person_archived)" +
+            " (person_name, person_surname, person_nick, person_archived)" +
             " values" +
             " (" +
-            "'" + person.PersonName + "', '" + person.PersonSurname + "', " + person.PersonArchived +
+            "'" + person.PersonName + "', '" + person.PersonSurname + "', '" + person.PersonNick + "', " + person.PersonArchived +
             ")";
            ExecuteQuery(sqlCommand);
 
         }
 
+
         public void UpdatePerson(Person person)
         {
+            string personName = person.PersonName.ToUpper();
+            string personSurname = person.PersonSurname.ToUpper();
+            string personNick = person.PersonNick.ToUpper();
+
             string sqlCommand = "UPDATE persons" +
                 " SET" +
-                " person_name = " + "'" + person.PersonName + "'," +
-                " person_surname = " + "'" + person.PersonSurname + "'," +
+                " person_name = " + "'" + personName + "'," +
+                " person_surname = " + "'" + personSurname + "'," +
+                " person_nick = " + "'" + personNick + "'," +
                 " person_archived = " + person.PersonArchived +
                 " WHERE person_id = " + person.PersonId;
             ExecuteQuery(sqlCommand);
         }
 
-        public bool IsPersonExist(string name, string surname)
+        public bool IsPersonExist(string name, string surname, string nick)
         {
             command.CommandText = "SELECT COUNT" +
                 " (*)" +
                 " FROM persons " +
                 " WHERE " +
                 " person_name = " + "'" + name + "'" +
-                " AND person_surname = " + "'" + surname + "'";
+                " AND person_surname = " + "'" + surname + "'" +
+                " AND person_nick = " + "'" + nick + "'";
 
             int count = Convert.ToInt32(command.ExecuteScalar());
 
@@ -94,13 +95,15 @@ namespace PayMaster
             return true;
         }
 
+
         public List<Person> GetAllPersons()
         {
             List<Person> result = new List<Person>();
 
             command.CommandText = "SELECT" +
                 " *" +
-                " FROM persons";
+                " FROM persons" +
+                " ORDER BY person_name ASC";
                 
 
             SQLiteDataReader reader = command.ExecuteReader();
@@ -111,6 +114,7 @@ namespace PayMaster
                 result.Add(new Person(Convert.ToInt32(reader["person_id"]),
                     reader["person_name"].ToString(),
                     reader["person_surname"].ToString(),
+                    reader["person_nick"].ToString(),
                     Convert.ToBoolean(reader["person_archived"])));
                 
 

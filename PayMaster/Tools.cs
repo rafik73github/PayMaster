@@ -25,5 +25,13 @@ namespace PayMaster
             
         }
 
+        public static void LetterValidatinTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"[^a-z-]+");
+
+            e.Handled = regex.IsMatch(e.Text);
+
+        }
+
     }
 }
