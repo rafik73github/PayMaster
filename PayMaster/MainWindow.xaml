@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="PAY MASTER" Height="700" Width="1200" WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        
+       
     </Window.Resources>
     <Grid >
         <Grid.ColumnDefinitions>
