@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PayMaster"
         mc:Ignorable="d"
         Title="WPŁATA" Height="400" Width="680" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    
     <Grid>
         <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="337" Margin="10,10,0,0" VerticalAlignment="Top" Width="645" Panel.ZIndex="-1"/>
 

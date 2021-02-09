@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace PayMaster
     /// </summary>
     public partial class MainWindow : Window
     {
-
+       
         SQLPerson sqlPerson = new SQLPerson();
         SQLTransaction sqlTransaction = new SQLTransaction();
         SQLPayTarget sqlPayTarget = new SQLPayTarget();
@@ -40,7 +41,29 @@ namespace PayMaster
             DataContext = new AccountBalance();
         }
 
-       
+        public class ConColor : IValueConverter
+        {
+
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                double num = (double)value;
+                if (num < 0)
+                {
+                    return Brushes.Red;
+                }
+
+                return Brushes.Black;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
+
+        }
+
+
+
         private void BtnPayIn_Click(object sender, RoutedEventArgs e)
         {
             PayIn payIn = new PayIn();

@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:PayMaster"
         mc:Ignorable="d"
         Title="WYPŁATA" Height="400" Width="680" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    
     <Grid>
         <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="337" Margin="10,10,0,0" VerticalAlignment="Top" Width="645" Panel.ZIndex="-1"/>
 
 
         <Label x:Name="LblAddPayerTitle" Content="WYPŁATA GOTÓWKI" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" Grid.ColumnSpan="2"/>
         <Label x:Name="LblAddTransactionDate" Content="DATA:" HorizontalAlignment="Left" Margin="25,65,0,0" VerticalAlignment="Top" Width="100"/>
-        <DatePicker x:Name="PayInDatePicker" HorizontalAlignment="Left"  Margin="125,65,0,0" VerticalAlignment="Top" Width="220" SelectedDateFormat="Short" DisplayDate="2021-01-28" />
+        <DatePicker x:Name="PayOutDatePicker" HorizontalAlignment="Left"  Margin="125,65,0,0" VerticalAlignment="Top" Width="220" SelectedDateFormat="Short" DisplayDate="2021-01-28" />
         <Label x:Name="LblAddTransactionPayer" Content="PŁATNIK:" HorizontalAlignment="Left" Margin="25,100,0,0" VerticalAlignment="Top" Width="100"/>
         <ComboBox x:Name="ComboBoxAddTransactionPayer" HorizontalAlignment="Left" Margin="125,100,0,0" VerticalAlignment="Top" Width="220" SelectionChanged="ComboBoxAddTransactionPayer_SelectionChanged">
             <ComboBox.ItemTemplate>

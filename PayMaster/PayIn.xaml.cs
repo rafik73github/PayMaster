@@ -37,6 +37,8 @@ namespace PayMaster
             TxtAddTransactionAmount.PreviewKeyDown += Tools.NoSpaceTextbox;
             TxtAddTransactionAmount.PreviewTextInput += Tools.NumberValidatinTextBox;
 
+            PayInDatePicker.DisplayDate = DateTime.Now.Date;
+
         }
 
         

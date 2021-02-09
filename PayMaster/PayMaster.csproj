@@ -76,6 +76,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AccountBalance.cs" />
+    <Compile Include="IfNegative.cs" />
     <Compile Include="Payers.xaml.cs">
       <DependentUpon>Payers.xaml</DependentUpon>
     </Compile>
@@ -169,6 +170,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="target_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payers_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="payers_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\raport_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="raport_64x64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

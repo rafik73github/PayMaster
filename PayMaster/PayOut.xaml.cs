@@ -37,6 +37,10 @@ namespace PayMaster
             TxtAddTransactionAmount.PreviewKeyDown += Tools.NoSpaceTextbox;
             TxtAddTransactionAmount.PreviewTextInput += Tools.NumberValidatinTextBox;
 
+            PayOutDatePicker.DisplayDate = DateTime.Now.Date;
+
+            
+
         }
 
 
@@ -52,12 +56,12 @@ namespace PayMaster
         private void PayInBtnOk_Click(object sender, RoutedEventArgs e)
         {
             double transactionAmount;
-            if (!PayInDatePicker.Text.Equals("")
+            if (!PayOutDatePicker.Text.Equals("")
                  && ComboBoxAddTransactionPayer.SelectedItem != null
                  && ComboBoxAddTransactionTarget.SelectedItem != null
                  && !TxtAddTransactionAmount.Text.Trim().Equals(""))
             {
-                string transactionDate = Convert.ToDateTime(PayInDatePicker.Text.Trim()).ToString("yyyy-MM-dd");
+                string transactionDate = Convert.ToDateTime(PayOutDatePicker.Text.Trim()).ToString("yyyy-MM-dd");
                 Person person = ComboBoxAddTransactionPayer.SelectedItem as Person;
                 int transactionPersonId = person.PersonId;
                 string transactionAmountTxt = TxtAddTransactionAmount.Text;
@@ -84,7 +88,7 @@ namespace PayMaster
                         transactionPayIn
                         ));
 
-                    PayInDatePicker.Text = "";
+                    PayOutDatePicker.Text = "";
                     ComboBoxAddTransactionPayer.SelectedItem = null;
                     ComboBoxAddTransactionTarget.SelectedItem = null;
                     TxtAddTransactionAmount.Text = "";

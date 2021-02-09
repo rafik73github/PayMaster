@@ -83,6 +83,26 @@ namespace PayMaster.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap payers_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("payers_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap raport_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("raport_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap target_64x64 {
             get {
                 object obj = ResourceManager.GetObject("target_64x64", resourceCulture);

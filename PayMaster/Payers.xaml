@@ -14,8 +14,9 @@
         <TextBox x:Name="TxtAddPayerSurname" HorizontalAlignment="Left" Height="23" Margin="125,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
         <Label x:Name="LblAddPayerNick" Content="PSEUDONIM:" HorizontalAlignment="Left" Margin="25,135,0,0" VerticalAlignment="Top" Width="100"/>
         <TextBox x:Name="TxtAddPayerNick" HorizontalAlignment="Left" Height="23" Margin="125,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
-        <Button x:Name="PayersBtnSave" Content="ZAPISZ" HorizontalAlignment="Left" Margin="400,65,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="PayersBtnSave_Click"/>
+        <Button x:Name="PayersBtnSave" Content="ZAPISZ" HorizontalAlignment="Left" Margin="372,65,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="PayersBtnSave_Click"/>
         <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="163" Margin="10,10,0,0" VerticalAlignment="Top" Width="645" Panel.ZIndex="-1"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="540,26,0,0" VerticalAlignment="Top" Width="100" Source="payers_64x64.png"/>
         <Button x:Name="PayersBtnClose" Content="ZAMKNIJ" HorizontalAlignment="Left" Margin="262,603,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="PayersBtnClose_Click"/>
 
         <Label x:Name="LblPayerListTitle" Content="LISTA PŁATNIKÓW" HorizontalAlignment="Left" Margin="25,192,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold"/>

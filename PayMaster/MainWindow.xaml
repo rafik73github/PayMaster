@@ -1,5 +1,4 @@
 ﻿<Window x:Class="PayMaster.MainWindow"
-        x:Name="_window"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,6 +6,9 @@
         xmlns:local="clr-namespace:PayMaster"
         mc:Ignorable="d"
         Title="PAY MASTER" Height="700" Width="1200" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        
+    </Window.Resources>
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="137*"/>
@@ -30,8 +32,18 @@
                 <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">CELE</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="BtnUsers" Content="PŁATNICY" HorizontalAlignment="Left" Margin="10,254,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="BtnUsers_Click" FontSize="14"/>
-        <Button x:Name="BtnShowRaport" Content="RAPORTY" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" Width="120" Height="60" FontSize="14"/>
+        <Button x:Name="BtnUsers"  HorizontalAlignment="Left" Margin="10,254,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="BtnUsers_Click" FontSize="14">
+            <StackPanel Orientation="Vertical">
+                <Image Source="payers_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="30" Width="30" Stretch="Uniform"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">PŁATNICY</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button x:Name="BtnShowRaport" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" Width="120" Height="60" FontSize="14">
+            <StackPanel Orientation="Vertical">
+                <Image Source="raport_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="30" Width="30" Stretch="Uniform"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">RAPORTY</TextBlock>
+            </StackPanel>
+        </Button>
         <DataGrid x:Name="MainGrid" AutoGenerateColumns="False" Grid.Column="1" HorizontalAlignment="Left" Height="580" Margin="10,26,0,0" VerticalAlignment="Top" Width="1018" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="80" FontSize="14" Header="DATA" Binding="{Binding TransactionDate}" >
@@ -95,10 +107,10 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                     <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
+                        <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="TextAlignment" Value="Right" />
                             <Setter Property="Padding" Value="0,0,3,0"/>
-
+                            <Setter Property="Foreground" Value="{Binding TransactionAmount, Converter={StaticResource ifnegative}}"/>
                         </Style>
 
                     </DataGridTextColumn.ElementStyle>
