@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PayMaster.TimeTools;
 
 namespace PayMaster
 {
@@ -34,32 +35,34 @@ namespace PayMaster
             sqlPerson.CreateTablePersons();
             sqlTransaction.CreateTableTransactions();
             sqlPayTarget.CreateTablePayTarget();
-            //MessageBox.Show(i.ToString());
-            
+            //MessageBox.Show(new TimeCalculations().FirstDayOfCurrentYear());
+
             MainGrid.ItemsSource = sqlTransaction.GetAllTransactionList();
 
+            ComboBoxDefinedDateFilterSelect.ItemsSource = DeclaredDateFilterList();
+            ComboBoxDefinedDateFilterSelect.SelectedIndex = 0;
+
+            DateFilterFirst.DisplayDateEnd = DateTime.Now;
+
+            DateFilterLast.DisplayDateEnd = DateTime.Now;
+
             DataContext = new AccountBalance();
+
         }
 
-        public class ConColor : IValueConverter
+        private List<DefinedDateFilterModel> DeclaredDateFilterList()
         {
-
-            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            List<DefinedDateFilterModel> result = new List<DefinedDateFilterModel>
             {
-                double num = (double)value;
-                if (num < 0)
-                {
-                    return Brushes.Red;
-                }
+                new DefinedDateFilterModel(0, "BIEŻĄCY ROK", new TimeCalculations().FirstDayOfCurrentYear(), DateTime.Now.Date.ToString("yyyy-MM-dd")),
+                new DefinedDateFilterModel(1, "WSZYSTKO", DateTime.Now.Date.ToString("yyyy-MM-dd"), DateTime.Now.Date.ToString("yyyy-MM-dd")),
+                new DefinedDateFilterModel(2, "OSTATNI MIESIĄC", new TimeCalculations().FirstDayOfMonth(1), new TimeCalculations().LastDayOfLastOfMonth()),
+                new DefinedDateFilterModel(3, "OSTATNIE 3 MIESIĄCE", new TimeCalculations().FirstDayOfMonth(3), new TimeCalculations().LastDayOfLastOfMonth()),
+                new DefinedDateFilterModel(4, "OSTATNIE 6 MIESIĘCY", new TimeCalculations().FirstDayOfMonth(6), new TimeCalculations().LastDayOfLastOfMonth()),
+                new DefinedDateFilterModel(5, "OSTATNIE 12 MIESIĘCY", new TimeCalculations().FirstDayOfMonth(12), new TimeCalculations().LastDayOfLastOfMonth())
+            };
 
-                return Brushes.Black;
-            }
-
-            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-            {
-                throw new NotImplementedException();
-            }
-
+            return result;
         }
 
 
@@ -91,5 +94,7 @@ namespace PayMaster
             this.Close();
             targets.Show();
         }
+
+       
     }
 }

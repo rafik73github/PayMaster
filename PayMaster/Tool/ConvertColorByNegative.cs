@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace PayMaster
+namespace PayMaster.Tool
 {
 
-    class IfNegative : IValueConverter
+    public class ConvertColorByNegative : IValueConverter
     {
         
             public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

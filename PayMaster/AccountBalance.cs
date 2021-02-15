@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PayMaster
 {
-    class AccountBalance
+    public class AccountBalance
     {
         SQLTransaction sqlTransaction = new SQLTransaction();
 

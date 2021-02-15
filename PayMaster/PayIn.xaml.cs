@@ -23,11 +23,12 @@ namespace PayMaster
         private readonly SQLPerson sqlPerson = new SQLPerson();
         private readonly SQLTransaction sqlTransaction = new SQLTransaction();
         private readonly SQLPayTarget sqlPayTarget = new SQLPayTarget();
+        List<Person> person = new SQLPerson().GetAllPersons();
         public PayIn()
         {
             InitializeComponent();
 
-            List<Person> person = sqlPerson.GetAllPersons();
+           // List<Person> person = sqlPerson.GetAllPersons();
             ComboBoxAddTransactionPayer.ItemsSource = person;
             ComboBoxAddTransactionPayer.SelectedValuePath = "PersonId";
 
@@ -69,14 +70,18 @@ namespace PayMaster
                 bool transactionPayIn = true;
 
                 Regex regex = new Regex(@"^[0-9]{1,5}\,?([0-9]{1,2})?$");
-               
+                transactionAmount = Convert.ToDouble(transactionAmountTxt);
                 if (!regex.IsMatch(transactionAmountTxt))
                 {
                     MessageBox.Show("NIEPOPRAWNY FORMAT W POLU 'KWOTA'");
                 }
+                else if(transactionAmount == 0)
+                {
+                    MessageBox.Show("WPROWADŹ KWOTĘ WIĘKSZĄ OD ZERA !");
+                }
                 else
                 {
-                    transactionAmount = Convert.ToDouble(transactionAmountTxt);
+                    
                     sqlTransaction.AddTransaction(new Transaction(
                         transactionDate,
                         transactionPersonId,
@@ -110,8 +115,40 @@ namespace PayMaster
             this.Close();
             mainWindow.Show();
         }
+/*
+        string _prevText = string.Empty;
 
-       
+        private void ComboBoxAddTransactionPayer_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            foreach(var item in ComboBoxAddTransactionPayer.Items)
+            {
+                if (item.ToString().StartsWith(ComboBoxAddTransactionPayer.Text))
+                {
+                    _prevText = ComboBoxAddTransactionPayer.Text;
+                    return;
+                }
+            }
+            ComboBoxAddTransactionPayer.Text = _prevText;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var cmbx = sender as ComboBox;
+            cmbx.ItemsSource = from item in person
+                               where item.PersonName.ToLower().Contains(cmbx.Text.ToLower())
+                               select item;
+            if (cmbx.ItemsSource != null)
+            {
+                cmbx.IsDropDownOpen = true;
+            }
+            else
+            {
+                cmbx.IsDropDownOpen = false;
+            }
+        }
+*/
+
+
 
 
     }

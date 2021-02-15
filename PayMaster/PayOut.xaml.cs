@@ -71,14 +71,19 @@ namespace PayMaster
                 bool transactionPayIn = false;
 
                 Regex regex = new Regex(@"^[0-9]{1,5}\,?([0-9]{1,2})?$");
+                transactionAmount = Convert.ToDouble(transactionAmountTxt);
 
                 if (!regex.IsMatch(transactionAmountTxt))
                 {
                     MessageBox.Show("NIEPOPRAWNY FORMAT W POLU 'KWOTA'");
                 }
+                else if (transactionAmount == 0)
+                {
+                    MessageBox.Show("WPROWADŹ KWOTĘ WIĘKSZĄ OD ZERA !");
+                }
                 else
                 {
-                    transactionAmount = Convert.ToDouble(transactionAmountTxt);
+                    
                     sqlTransaction.AddTransaction(new Transaction(
                         transactionDate,
                         transactionPersonId,

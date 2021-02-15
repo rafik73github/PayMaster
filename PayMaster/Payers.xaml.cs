@@ -49,9 +49,10 @@ namespace PayMaster
             string[] payerSurnameSolo = payerAddSurnameText.Split(' ');
 
             
-            if (payerAddNameText.Equals("") || payerAddSurnameText.Equals("")){
+            if (payerAddNameText.Equals("") && payerAddSurnameText.Equals("") && payerAddNickText.Equals(""))
+            {
 
-                MessageBox.Show("POLA 'IMIĘ' I 'NAZWISKO'\nMUSZĄ BYĆ WYPEŁNIONE\nPOLE 'PSEUDONIM' NIE JEST OBOWIĄZKOWE");
+                MessageBox.Show("WYPEŁNIJ PRZYNAJNIEJ\nJEDNO POLE");
               
 
             }
