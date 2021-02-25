@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace PayMaster
 {
-    class Transaction
+    class TransactionModel
     {
 
         public int TransactionId { get; set; }
@@ -22,7 +18,7 @@ namespace PayMaster
         public bool TransactionPayIn { get; set; } // wpłata?
 
 
-        public Transaction(int transactionId,
+        public TransactionModel(int transactionId,
             string transactionDate,
             int transactionPersonId,
             string transactionPersonName,
@@ -47,7 +43,7 @@ namespace PayMaster
             this.TransactionPayIn = transactionPayIn;
         }
 
-        public Transaction(string transactionDate,
+        public TransactionModel(string transactionDate,
             int transactionPersonId,
             string transactionPersonName,
             string transactionPersonSurname,
@@ -70,7 +66,7 @@ namespace PayMaster
             this.TransactionPayIn = transactionPayIn;
         }
 
-        public Transaction(string transactionDate,
+        public TransactionModel(string transactionDate,
             int transactionPersonId,
             double transactionAmount,
             string transactionDescription,

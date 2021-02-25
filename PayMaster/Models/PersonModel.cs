@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace PayMaster
 {
-    class Person
+    class PersonModel
     {
        
         public int PersonId { get; set; }
@@ -15,7 +10,7 @@ namespace PayMaster
         public string PersonNick { get; set; }
         public bool PersonArchived { get; set; }
 
-        public Person(int personId, string personName, string personSurname, string personNick, bool personArchived)
+        public PersonModel(int personId, string personName, string personSurname, string personNick, bool personArchived)
         {
             this.PersonId = personId;
             this.PersonName = personName;
@@ -24,7 +19,7 @@ namespace PayMaster
             this.PersonArchived = personArchived;
         }
 
-        public Person(string personName, string personSurname, string personNick, bool personArchived)
+        public PersonModel(string personName, string personSurname, string personNick, bool personArchived)
         {
             this.PersonName = personName;
             this.PersonSurname = personSurname;

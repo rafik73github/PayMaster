@@ -90,10 +90,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AccountBalance.cs" />
-    <Compile Include="TimeTools\DefinedDateFilterModel.cs" />
-    <Compile Include="TimeTools\TimeCalculations.cs" />
-    <Compile Include="Tool\ConvertColorByNegative.cs" />
+    <Compile Include="Tools\AccountBalance.cs" />
+    <Compile Include="Models\DefinedDateFilterModel.cs" />
+    <Compile Include="Tools\TimeCalculations.cs" />
+    <Compile Include="Tools\ConvertColorByNegative.cs" />
     <Compile Include="Payers.xaml.cs">
       <DependentUpon>Payers.xaml</DependentUpon>
     </Compile>
@@ -103,16 +103,16 @@
     <Compile Include="PayOut.xaml.cs">
       <DependentUpon>PayOut.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PayTarget.cs" />
-    <Compile Include="SQLPayTarget.cs" />
-    <Compile Include="SQLPerson.cs" />
-    <Compile Include="DatabasePatch.cs" />
-    <Compile Include="SQLTransaction.cs" />
+    <Compile Include="Models\PayTargetModel.cs" />
+    <Compile Include="SQL\SQLPayTarget.cs" />
+    <Compile Include="SQL\SQLPerson.cs" />
+    <Compile Include="SQL\DatabasePatch.cs" />
+    <Compile Include="SQL\SQLTransaction.cs" />
     <Compile Include="Targets.xaml.cs">
       <DependentUpon>Targets.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tools.cs" />
-    <Compile Include="Transaction.cs" />
+    <Compile Include="Tools\ValidateText.cs" />
+    <Compile Include="Models\TransactionModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -143,7 +143,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Person.cs" />
+    <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -212,6 +212,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using PayMaster.SQL;
 
 namespace PayMaster
 {
@@ -13,5 +8,23 @@ namespace PayMaster
     /// </summary>
     public partial class App : Application
     {
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            new SQLPerson().CreateTablePersons();
+            new SQLTransaction().CreateTableTransactions();
+            new SQLPayTarget().CreateTablePayTarget();
+
+            OpenMainWindow();
+        }
+
+        private void OpenMainWindow()
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+        }
+
+
+
     }
 }

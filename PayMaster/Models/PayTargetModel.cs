@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace PayMaster
 {
-    class PayTarget
+    class PayTargetModel
     {
         public int PayTargetId { get; set; }
         public string PayTargetText { get; set; }
         public bool PayTargetArchived { get; set; }
 
-        public PayTarget
+        public PayTargetModel
             (
             int payTargetId,
             string payTargetText,
@@ -24,7 +19,7 @@ namespace PayMaster
             this.PayTargetArchived = payTargetArchived;
         }
 
-        public PayTarget
+        public PayTargetModel
             (
             string payTargetText,
             bool payTargetArchived

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PayMaster.SQL;
 
-namespace PayMaster
+namespace PayMaster.Tools
 {
     public class AccountBalance
     {

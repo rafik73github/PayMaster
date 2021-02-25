@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 
-namespace PayMaster
+namespace PayMaster.SQL
 {
     class SQLTransaction
     {
@@ -43,7 +43,7 @@ namespace PayMaster
 
         }
 
-        public void AddTransaction(Transaction transaction)
+        public void AddTransaction(TransactionModel transaction)
         {
             int amount = Convert.ToInt32(transaction.TransactionAmount * 100);
             if(transaction.TransactionPayIn == false) { amount *= -1; }
@@ -62,9 +62,9 @@ namespace PayMaster
 
         }
 
-        public List<Transaction> GetAllTransactionList()
+        public List<TransactionModel> GetAllTransactionList()
         {
-            List<Transaction> result = new List<Transaction>();
+            List<TransactionModel> result = new List<TransactionModel>();
             double convertedMoney;
             
             command.CommandText = "SELECT" +
@@ -90,7 +90,7 @@ namespace PayMaster
             {
                 convertedMoney = (Convert.ToDouble(reader["a_tr_amount"])) / 100;
                 
-                result.Add(new Transaction(Convert.ToInt32(reader["a_tr_id"]),
+                result.Add(new TransactionModel(Convert.ToInt32(reader["a_tr_id"]),
                                            reader["a_tr_date"].ToString(),
                                            Convert.ToInt32(reader["a_tr_person_id"]),
                                            reader["b_person_name"].ToString(),

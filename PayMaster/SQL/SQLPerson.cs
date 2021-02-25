@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 
-namespace PayMaster
+namespace PayMaster.SQL
 {
     class SQLPerson
     {
@@ -45,7 +45,7 @@ namespace PayMaster
         }
         
 
-        public void AddPerson(Person person)
+        public void AddPerson(PersonModel person)
         {
            
             string sqlCommand = "INSERT INTO persons" +
@@ -59,7 +59,7 @@ namespace PayMaster
         }
 
 
-        public void UpdatePerson(Person person)
+        public void UpdatePerson(PersonModel person)
         {
             string personName = person.PersonName.ToUpper();
             string personSurname = person.PersonSurname.ToUpper();
@@ -96,9 +96,9 @@ namespace PayMaster
         }
 
 
-        public List<Person> GetAllPersons()
+        public List<PersonModel> GetAllPersons()
         {
-            List<Person> result = new List<Person>();
+            List<PersonModel> result = new List<PersonModel>();
 
             command.CommandText = "SELECT" +
                 " *" +
@@ -111,7 +111,7 @@ namespace PayMaster
             while (reader.Read())
             {
 
-                result.Add(new Person(Convert.ToInt32(reader["person_id"]),
+                result.Add(new PersonModel(Convert.ToInt32(reader["person_id"]),
                     reader["person_name"].ToString(),
                     reader["person_surname"].ToString(),
                     reader["person_nick"].ToString(),

@@ -1,19 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using PayMaster.TimeTools;
+using PayMaster.SQL;
+using PayMaster.Tools;
 
 namespace PayMaster
 {
@@ -23,18 +13,14 @@ namespace PayMaster
     public partial class MainWindow : Window
     {
        
-        SQLPerson sqlPerson = new SQLPerson();
         SQLTransaction sqlTransaction = new SQLTransaction();
-        SQLPayTarget sqlPayTarget = new SQLPayTarget();
-
+        
         public MainWindow()
         {
             
             InitializeComponent();
 
-            sqlPerson.CreateTablePersons();
-            sqlTransaction.CreateTableTransactions();
-            sqlPayTarget.CreateTablePayTarget();
+            
             //MessageBox.Show(new TimeCalculations().FirstDayOfCurrentYear());
 
             MainGrid.ItemsSource = sqlTransaction.GetAllTransactionList();

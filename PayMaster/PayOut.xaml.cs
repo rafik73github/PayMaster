@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using PayMaster.SQL;
+using PayMaster.Tools;
 
 namespace PayMaster
 {
@@ -27,15 +20,15 @@ namespace PayMaster
         {
             InitializeComponent();
 
-            List<Person> person = sqlPerson.GetAllPersons();
+            List<PersonModel> person = sqlPerson.GetAllPersons();
             ComboBoxAddTransactionPayer.ItemsSource = person;
             ComboBoxAddTransactionPayer.SelectedValuePath = "PersonId";
 
-            List<PayTarget> target = sqlPayTarget.GetAllPayTargets();
+            List<PayTargetModel> target = sqlPayTarget.GetAllPayTargets();
             ComboBoxAddTransactionTarget.ItemsSource = target;
 
-            TxtAddTransactionAmount.PreviewKeyDown += Tools.NoSpaceTextbox;
-            TxtAddTransactionAmount.PreviewTextInput += Tools.NumberValidatinTextBox;
+            TxtAddTransactionAmount.PreviewKeyDown += ValidateText.NoSpaceTextbox;
+            TxtAddTransactionAmount.PreviewTextInput += ValidateText.NumberValidatinTextBox;
 
             PayOutDatePicker.DisplayDate = DateTime.Now.Date;
 
@@ -62,10 +55,10 @@ namespace PayMaster
                  && !TxtAddTransactionAmount.Text.Trim().Equals(""))
             {
                 string transactionDate = Convert.ToDateTime(PayOutDatePicker.Text.Trim()).ToString("yyyy-MM-dd");
-                Person person = ComboBoxAddTransactionPayer.SelectedItem as Person;
+                PersonModel person = ComboBoxAddTransactionPayer.SelectedItem as PersonModel;
                 int transactionPersonId = person.PersonId;
                 string transactionAmountTxt = TxtAddTransactionAmount.Text;
-                PayTarget payTarget = ComboBoxAddTransactionTarget.SelectedItem as PayTarget;
+                PayTargetModel payTarget = ComboBoxAddTransactionTarget.SelectedItem as PayTargetModel;
                 int transactionTarget = payTarget.PayTargetId;
                 string transactionDescription = TxtAddTransactionDescription.Text.Trim().ToUpper();
                 bool transactionPayIn = false;
@@ -84,7 +77,7 @@ namespace PayMaster
                 else
                 {
                     
-                    sqlTransaction.AddTransaction(new Transaction(
+                    sqlTransaction.AddTransaction(new TransactionModel(
                         transactionDate,
                         transactionPersonId,
                         transactionAmount,

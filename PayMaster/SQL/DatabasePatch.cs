@@ -2,7 +2,7 @@
 using System.IO;
 using System.Data.SQLite;
 
-namespace PayMaster
+namespace PayMaster.SQL
 {
     class DatabasePatch
     {

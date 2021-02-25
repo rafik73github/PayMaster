@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 
 
-namespace PayMaster
+namespace PayMaster.SQL
 {
     class SQLPayTarget
     {
@@ -39,7 +39,7 @@ namespace PayMaster
 
         }
 
-        public void AddPayTarget(PayTarget payTarget)
+        public void AddPayTarget(PayTargetModel payTarget)
         {
 
             string sqlCommand = "INSERT INTO pay_target" +
@@ -52,9 +52,9 @@ namespace PayMaster
 
         }
 
-        public List<PayTarget> GetAllPayTargets()
+        public List<PayTargetModel> GetAllPayTargets()
         {
-            List<PayTarget> result = new List<PayTarget>();
+            List<PayTargetModel> result = new List<PayTargetModel>();
 
             command.CommandText = "SELECT" +
                 " *" +
@@ -67,7 +67,7 @@ namespace PayMaster
             while (reader.Read())
             {
 
-                result.Add(new PayTarget(Convert.ToInt32(reader["pay_target_id"]),
+                result.Add(new PayTargetModel(Convert.ToInt32(reader["pay_target_id"]),
                     reader["pay_target_text"].ToString(),
                     Convert.ToBoolean(reader["pay_target_archived"])));
 

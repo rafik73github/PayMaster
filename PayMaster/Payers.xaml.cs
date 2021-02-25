@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using PayMaster.SQL;
+using PayMaster.Tools;
 
 namespace PayMaster
 {
@@ -29,7 +20,7 @@ namespace PayMaster
             InitializeComponent();
 
             PayersGrid.ItemsSource = sqlPerson.GetAllPersons();
-            TxtAddPayerSurname.PreviewTextInput += Tools.LetterValidatinTextBox;
+            TxtAddPayerSurname.PreviewTextInput += ValidateText.LetterValidatinTextBox;
         }
 
         private void PayersBtnClose_Click(object sender, RoutedEventArgs e)
@@ -70,7 +61,7 @@ namespace PayMaster
             }
             else
             {
-                sqlPerson.AddPerson(new Person(payerAddNameText, payerAddSurnameText, payerAddNickText, false));
+                sqlPerson.AddPerson(new PersonModel(payerAddNameText, payerAddSurnameText, payerAddNickText, false));
 
                 TxtAddPayerName.Text = "";
                 TxtAddPayerSurname.Text = "";
@@ -84,7 +75,7 @@ namespace PayMaster
         private void PayersGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             
-              Person tempPerson = PayersGrid.SelectedItem as Person;
+              PersonModel tempPerson = PayersGrid.SelectedItem as PersonModel;
             if (tempPerson != null)
             {
                 tempPersonName = tempPerson.PersonName;
@@ -100,7 +91,7 @@ namespace PayMaster
         private void PayersGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
             
-            Person person = PayersGrid.SelectedItem as Person;
+            PersonModel person = PayersGrid.SelectedItem as PersonModel;
 
             if (!person.PersonName.Equals(tempPersonName) || !person.PersonSurname.Equals(tempPersonSurname) || !person.PersonNick.Equals(tempPersonNick))
             {
