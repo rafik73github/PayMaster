@@ -14,6 +14,7 @@ namespace PayMaster
             new SQLPerson().CreateTablePersons();
             new SQLTransaction().CreateTableTransactions();
             new SQLPayTarget().CreateTablePayTarget();
+            new SQLDateFilter().CreateTableDateFilter();
 
             OpenMainWindow();
         }
