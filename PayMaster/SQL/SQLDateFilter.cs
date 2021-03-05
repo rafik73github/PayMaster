@@ -43,7 +43,7 @@ namespace PayMaster.SQL
 
         }
 
-        public bool AddDateFilter(DateFilterModel dateFilterModel)
+        public bool AddDateFilter(FilterModel dateFilterModel)
         {
             command.CommandText = "SELECT COUNT" +
                 " (*)" +
@@ -69,7 +69,7 @@ namespace PayMaster.SQL
             return true;
         }
 
-        public void UpdateDateFilter(DateFilterModel dateFilterModel)
+        public void UpdateDateFilter(FilterModel dateFilterModel)
         {
             
             string sqlCommand = "UPDATE date_filter" +
@@ -77,14 +77,14 @@ namespace PayMaster.SQL
                 " date_filter_description = " + "'" + dateFilterModel.DateFilterDescription + "'," +
                 " date_filter_first_date = " + "'" + dateFilterModel.DateFilterFirstDate + "'," +
                 " date_filter_last_date = " + "'" + dateFilterModel.DateFilterLastDate +
-                " WHERE person_id = " + dateFilterModel.DateFilterId;
+                " WHERE person_id = " + dateFilterModel.FilterId;
             ExecuteQuery(sqlCommand);
         }
 
 
-        public List<DateFilterModel> GetDateFilter()
+        public List<FilterModel> GetDateFilter()
         {
-            List<DateFilterModel> result = new List<DateFilterModel>();
+            List<FilterModel> result = new List<FilterModel>();
 
             command.CommandText = "SELECT" +
                 " *" +
@@ -96,7 +96,7 @@ namespace PayMaster.SQL
             while (reader.Read())
             {
 
-                result.Add(new DateFilterModel(Convert.ToInt32(reader["date_filter_id"]),
+                result.Add(new FilterModel(Convert.ToInt32(reader["date_filter_id"]),
                     reader["date_filter_description"].ToString(),
                     reader["date_filter_first_date"].ToString(),
                     reader["date_filter_last_date"].ToString()));

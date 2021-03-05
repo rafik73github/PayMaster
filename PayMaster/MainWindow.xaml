@@ -145,8 +145,8 @@
         <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="61" Margin="10,545,0,0" VerticalAlignment="Top" Width="120" Panel.ZIndex="-1"/>
         <TextBlock x:Name="AccountBalanceValue" HorizontalAlignment="Left" TextAlignment="Center" Margin="10,580,0,0" TextWrapping="Wrap" Text="{Binding accountBalanceValue, StringFormat={}{0:c}, ConverterCulture=pl-PL}" VerticalAlignment="Top" Width="120" Height="21" FontSize="16" FontWeight="Bold" Foreground="#FF155706"/>
 
-        <RadioButton GroupName="RadioButtonDate" Content="ZDEFINIOWANY ZAKRES DAT" IsChecked="True" HorizontalAlignment="Left" Height="19" Margin="10,662,0,0" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
-        <ComboBox x:Name="ComboBoxDefinedDateFilterSelect" Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="22,686,0,0" VerticalAlignment="Top" Width="220">
+        <Label x:Name="LabelDateFilter" Content="DATA:" HorizontalAlignment="Left" Margin="20,660,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
+        <ComboBox x:Name="ComboBoxDateFilterSelect" Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="20,686,0,0" VerticalAlignment="Top" Width="220">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -155,13 +155,37 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <RadioButton GroupName="RadioButtonDate" Content="DOWOLNY ZAKRES DAT" HorizontalAlignment="Left" Height="19" Margin="10,734,0,0" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
-
-        <Label x:Name="DateFilterFirstLabel" Content="OD:" Grid.Column="1" HorizontalAlignment="Left" Margin="22,758,0,0" VerticalAlignment="Top" Height="26" Width="30"/>
-        <DatePicker x:Name="DateFilterFirst" HorizontalAlignment="Left"  Margin="57,759,0,0" VerticalAlignment="Top" Width="185" SelectedDateFormat="Short" Grid.Column="1" Height="24" />
-        <Label x:Name="DateFilterLastLabel" Content="DO:" Grid.Column="1" HorizontalAlignment="Left" Margin="22,789,0,0" VerticalAlignment="Top" Height="26" Width="30"/>
-        <DatePicker x:Name="DateFilterLast" HorizontalAlignment="Left"  Margin="57,790,0,0" VerticalAlignment="Top" Width="185" SelectedDateFormat="Short" Grid.Column="1" Height="24" />
-        <Button x:Name="BtnFilterView" HorizontalAlignment="Left" Margin="347,683,0,0" VerticalAlignment="Top" Width="120" Height="60" FontSize="14" Grid.Column="1">
+        <Label x:Name="LabelNickFilter" Content="PSEUDONIM:" HorizontalAlignment="Left" Margin="250,660,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
+        <ComboBox x:Name="ComboBoxNickFilterSelect" Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="250,686,0,0" VerticalAlignment="Top" Width="220">
+                <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding PersonNick}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label x:Name="LabelTransactionFilter" Content="TYP TRANSAKCJI:" HorizontalAlignment="Left" Margin="480,660,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
+        <ComboBox x:Name="ComboBoxTransactionFilterSelect" Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="480,686,0,0" VerticalAlignment="Top" Width="220">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding DateText}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label x:Name="LabelTargetFilter" Content="CEL OPERACJI:" HorizontalAlignment="Left" Margin="710,660,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
+        <ComboBox x:Name="ComboBoxTargetFilterSelect" Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="710,686,0,0" VerticalAlignment="Top" Width="220">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding DateText}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button x:Name="BtnFilterView" HorizontalAlignment="Left" Margin="959,686,0,0" VerticalAlignment="Top" Width="120" Height="60" FontSize="14" Grid.Column="1">
             <StackPanel Orientation="Vertical">
                 <Image Source="raport_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="30" Width="30" Stretch="Uniform"/>
                 <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">FILTRUJ</TextBlock>

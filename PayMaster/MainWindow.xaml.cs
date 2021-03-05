@@ -25,12 +25,11 @@ namespace PayMaster
 
             MainGrid.ItemsSource = sqlTransaction.GetAllTransactionList();
 
-            ComboBoxDefinedDateFilterSelect.ItemsSource = DeclaredDateFilterList();
-            ComboBoxDefinedDateFilterSelect.SelectedIndex = 0;
+            ComboBoxDateFilterSelect.ItemsSource = DeclaredDateFilterList();
+            ComboBoxDateFilterSelect.SelectedIndex = 0;
 
-            DateFilterFirst.DisplayDateEnd = DateTime.Now;
-
-            DateFilterLast.DisplayDateEnd = DateTime.Now;
+            ComboBoxNickFilterSelect.ItemsSource = new SQLPerson().GetPersonsNick();
+            ComboBoxNickFilterSelect.SelectedIndex = 0;
 
             DataContext = new AccountBalance();
 

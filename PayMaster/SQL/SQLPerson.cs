@@ -125,7 +125,39 @@ namespace PayMaster.SQL
 
         }
 
-        
+        public List<PersonModel> GetPersonsNick()
+        {
+            List<PersonModel> result = new List<PersonModel>();
+
+            command.CommandText = "SELECT" +
+                " *" +
+                " FROM persons" +
+                " WHERE person_nick != ''" +
+                " ORDER BY person_nick ASC";
+
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            result.Add(new PersonModel(-1,
+                    "WSZYSCY"
+                    ));
+
+            while (reader.Read())
+            {
+
+                result.Add(new PersonModel(Convert.ToInt32(reader["person_id"]),
+                    reader["person_nick"].ToString()
+                    ));
+
+
+            }
+            reader.Close();
+
+            return result;
+
+        }
+
+
 
     }
 }

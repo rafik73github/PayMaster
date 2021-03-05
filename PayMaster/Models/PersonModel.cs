@@ -19,6 +19,12 @@ namespace PayMaster
             this.PersonArchived = personArchived;
         }
 
+        public PersonModel(int personId, string personNick)
+        {
+            this.PersonId = personId;
+            this.PersonNick = personNick;
+        }
+
         public PersonModel(string personName, string personSurname, string personNick, bool personArchived)
         {
             this.PersonName = personName;

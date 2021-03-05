@@ -90,8 +90,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Enums\DateFilterEnum.cs" />
-    <Compile Include="Models\DateFilterModel.cs" />
+    <Compile Include="Models\FilterModel.cs" />
     <Compile Include="SQL\SQLDateFilter.cs" />
     <Compile Include="Tools\AccountBalance.cs" />
     <Compile Include="Models\DefinedDateFilterModel.cs" />
