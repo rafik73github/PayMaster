@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PayMaster"
         mc:Ignorable="d"
-        Title="CELE" Height="720" Width="680" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="CELE" Height="720" Width="680" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="Resources\target_64x64.png">
     
     <Grid>
         <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="204" Margin="10,10,0,0" VerticalAlignment="Top" Width="645" Panel.ZIndex="-1"/>
@@ -13,8 +13,14 @@
         <Label x:Name="LblAddTargetTitle" Content="CELE OPERACJI" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" Grid.ColumnSpan="2"/>
 
         <Label x:Name="LblAddTarget" Content="CEL:" HorizontalAlignment="Left" Margin="25,65,0,0" VerticalAlignment="Top" Width="100"/>
-        <TextBox x:Name="TxtAddTarget" HorizontalAlignment="Left" Height="23" Margin="125,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="470"/>
-        <Button x:Name="TargetBtnSave" Content="ZAPISZ" HorizontalAlignment="Left" Margin="125,106,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="TargetBtnSave_Click"/>
+        <TextBox x:Name="TxtAddTarget" Style="{StaticResource MyTextBox}" HorizontalAlignment="Left" Height="25" Margin="125,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="470"/>
+        <Button x:Name="TargetBtnSave" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="125,106,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="TargetBtnSave_Click">
+            <StackPanel Orientation="Vertical">
+                <Image Source="Resources\disk_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">ZAPISZ</TextBlock>
+            </StackPanel>
+        </Button>
+        
 
         <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="362" Margin="10,219,0,0" VerticalAlignment="Top" Width="645" Panel.ZIndex="-1"/>
 
@@ -35,7 +41,13 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="TargetBtnClose" Content="ZAMKNIJ" HorizontalAlignment="Left" Margin="262,603,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="TargetBtnClose_Click" />
-        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="495,99,0,0" VerticalAlignment="Top" Width="100" Source="target_64x64.png"/>
+        <Button x:Name="TargetBtnClose" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="262,603,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="TargetBtnClose_Click">
+            <StackPanel Orientation="Vertical">
+                <Image Source="Resources\close_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">ZAMKNIJ</TextBlock>
+            </StackPanel>
+        </Button>
+        
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="495,99,0,0" VerticalAlignment="Top" Width="100" Source="Resources\target_64x64.png"/>
     </Grid>
 </Window>

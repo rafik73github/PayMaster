@@ -6,53 +6,74 @@
         xmlns:local="clr-namespace:PayMaster"
         xmlns:tool="clr-namespace:PayMaster.Tool"
         mc:Ignorable="d"
-        Title="PAY MASTER" Height="900" Width="1600" WindowStartupLocation="CenterScreen">
+        Title="PAY MASTER" Height="730" Width="1460" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="Resources/paymaster_64x64.png">
     <Window.Resources>
         <tool:ConvertColorByNegative x:Key="convertcolorbynegative"/>
 
     </Window.Resources>
     <Grid >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="17*"/>
-            <ColumnDefinition Width="182*"/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="BtnPayIn"  HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="BtnPayIn_Click" FontSize="14" Foreground="Black">
+
+        <Button x:Name="BtnPayIn" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="598,545,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="BtnPayIn_Click" Foreground="Black">
             <StackPanel Orientation="Vertical" >
-                <Image Source="money_plus_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="30" Width="30"  Stretch="Uniform"/>
+                <Image Source="Resources\money_plus_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24"  Stretch="Uniform"/>
                 <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">WPŁATA</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="BtnPayOut"  HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="BtnPayOut_Click" FontSize="14" Foreground="Black" Background="#FFDDDDDD">
+        <Button x:Name="BtnPayOut" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="598,608,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="BtnPayOut_Click" Foreground="Black" Background="#FFDDDDDD">
             <StackPanel Orientation="Vertical">
-                <Image Source="money_minus_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="30" Width="30" Stretch="Uniform"/>
+                <Image Source="Resources\money_minus_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
                 <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">WYPŁATA</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="BtnTargets" HorizontalAlignment="Left" Margin="10,320,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="BtnTargets_Click" FontSize="14">
+        <Button x:Name="BtnSettings" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="25,545,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="BtnSettings_Click">
             <StackPanel Orientation="Vertical">
-                <Image Source="target_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="30" Width="30" Stretch="Uniform"/>
+                <Image Source="Resources\settings_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">USTAWIENIA</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button x:Name="BtnTargets" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="140,545,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="BtnTargets_Click">
+            <StackPanel Orientation="Vertical">
+                <Image Source="Resources\target_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
                 <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">CELE</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="BtnUsers"  HorizontalAlignment="Left" Margin="10,398,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="BtnUsers_Click" FontSize="14">
+        <Button x:Name="BtnAbout" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="25,608,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="BtnAbout_Click" >
             <StackPanel Orientation="Vertical">
-                <Image Source="payers_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="30" Width="30" Stretch="Uniform"/>
+                <Image Source="Resources\about_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">O PROGRAMIE...</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button x:Name="BtnUsers" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="140,608,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="BtnUsers_Click" >
+            <StackPanel Orientation="Vertical">
+                <Image Source="Resources\payers_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
                 <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">PŁATNICY</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="BtnShowRaport" HorizontalAlignment="Left" Margin="10,474,0,0" VerticalAlignment="Top" Width="120" Height="60" FontSize="14">
+        <Button x:Name="BtnShowRaport" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="1321,608,0,0" VerticalAlignment="Top" Width="100" Height="50" >
+
             <StackPanel Orientation="Vertical">
-                <Image Source="raport_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="30" Width="30" Stretch="Uniform"/>
-                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">RAPORTY</TextBlock>
+                <Image Source="Resources\raport_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">RAPORT WIDOKU</TextBlock>
             </StackPanel>
+
         </Button>
-        <DataGrid x:Name="MainGrid" AutoGenerateColumns="False" Grid.Column="1" HorizontalAlignment="Left" Height="580" Margin="10,26,0,0" VerticalAlignment="Top" Width="1427" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
+
+        <Button x:Name="BtnDelRow" IsEnabled="False" Style="{StaticResource MyButtonRed}" HorizontalAlignment="Left" Margin="1321,545,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="BtnDelRow_Click" />
+
+        <DataGrid x:Name="MainGrid"
+                  SelectionMode="Single"
+                  RowEditEnding="MainGrid_RowEditEnding"
+                  SelectedCellsChanged="MainGrid_SelectedCellsChanged"
+                  AutoGenerateColumns="False"
+                  SelectionChanged="MainGrid_SelectionChanged"
+                  HorizontalAlignment="Left" Height="500" Margin="10,22,0,0" VerticalAlignment="Top" Width="1427" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" >
             <DataGrid.Columns>
-                <DataGridTextColumn Width="85" FontSize="14" Header="DATA" Binding="{Binding TransactionDate}" >
+                <DataGridTextColumn Width="85" IsReadOnly="True" FontSize="13" Header="DATA" Binding="{Binding TransactionDate}" >
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                             <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="FontSize" Value="11" />
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                     <DataGridTextColumn.ElementStyle>
@@ -62,11 +83,12 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Width="150" FontSize="14" Header="IMIĘ" Binding="{Binding TransactionPersonName}" >
+                <DataGridTextColumn Width="150" IsReadOnly="True"  FontSize="13" Header="IMIĘ" Binding="{Binding TransactionPersonName}" >
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                             <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="FontSize" Value="11" />
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                     <DataGridTextColumn.ElementStyle>
@@ -75,11 +97,12 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Width="150" FontSize="14" Header="NAZWISKO" Binding="{Binding TransactionPersonSurname}" >
+                <DataGridTextColumn Width="150" IsReadOnly="True"  FontSize="13" Header="NAZWISKO" Binding="{Binding TransactionPersonSurname}" >
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                             <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="FontSize" Value="11" />
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                     <DataGridTextColumn.ElementStyle>
@@ -88,11 +111,12 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Width="150" FontSize="14" Header="PSEUDONIM" Binding="{Binding TransactionPersonNick}" >
+                <DataGridTextColumn Width="150" IsReadOnly="True"  FontSize="13" Header="PSEUDONIM" Binding="{Binding TransactionPersonNick}" >
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                             <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="FontSize" Value="11" />
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                     <DataGridTextColumn.ElementStyle>
@@ -101,11 +125,12 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Width="100" FontSize="14" Header="KWOTA" Binding="{Binding TransactionAmount, StringFormat={}{0:c}, ConverterCulture=pl-PL}" >
+                <DataGridTextColumn Width="100" IsReadOnly="True"  FontSize="13" Header="KWOTA" Binding="{Binding TransactionAmount, StringFormat={}{0:c}, ConverterCulture=pl-PL}" >
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                             <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="FontSize" Value="11" />
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                     <DataGridTextColumn.ElementStyle>
@@ -117,11 +142,12 @@
 
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Width="390" FontSize="14" Header="CEL OPERACJI" Binding="{Binding TransactionTargetText}" >
+                <DataGridTextColumn Width="390" IsReadOnly="True"  FontSize="13" Header="CEL OPERACJI" Binding="{Binding TransactionTargetText}" >
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                             <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="FontSize" Value="11" />
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                     <DataGridTextColumn.ElementStyle>
@@ -130,66 +156,62 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Width="390" FontSize="14" Header="OPIS" Binding="{Binding TransactionDescription}" >
+                <DataGridTextColumn Width="394" IsReadOnly="False"  FontSize="13" Header="OPIS" Binding="{Binding TransactionDescription, UpdateSourceTrigger=PropertyChanged}" >
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                             <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="FontSize" Value="11" />
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
 
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="AccountBalanceTitleLabel" Content="SALDO KONTA:"  HorizontalAlignment="Left" Margin="10,554,0,0" VerticalAlignment="Top" Width="120" Height="21" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Padding="5,0"/>
-        <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="61" Margin="10,545,0,0" VerticalAlignment="Top" Width="120" Panel.ZIndex="-1"/>
-        <TextBlock x:Name="AccountBalanceValue" HorizontalAlignment="Left" TextAlignment="Center" Margin="10,580,0,0" TextWrapping="Wrap" Text="{Binding accountBalanceValue, StringFormat={}{0:c}, ConverterCulture=pl-PL}" VerticalAlignment="Top" Width="120" Height="21" FontSize="16" FontWeight="Bold" Foreground="#FF155706"/>
-
-        <Label x:Name="LabelDateFilter" Content="DATA:" HorizontalAlignment="Left" Margin="20,660,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
-        <ComboBox x:Name="ComboBoxDateFilterSelect" Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="20,686,0,0" VerticalAlignment="Top" Width="220">
+        <Label x:Name="LabelDateFilter" Content="ZAKRES DAT:" HorizontalAlignment="Left" Margin="740,546,0,0" VerticalAlignment="Top" Width="110"/>
+        <DatePicker x:Name="FirstDateFilter" Style="{StaticResource MyDatePicker}" Background="White" BorderBrush="SteelBlue" CalendarClosed="FirstDateFilter_CalendarClosed" HorizontalAlignment="Left" Margin="855,545,0,0" VerticalAlignment="Top" Width="160" Height="25"/>
+        <DatePicker x:Name="LastDateFilter" Style="{StaticResource MyDatePicker}" Background="White" BorderBrush="SteelBlue" CalendarClosed="LastDateFilter_CalendarClosed" HorizontalAlignment="Left" Margin="1020,545,0,0" VerticalAlignment="Top" Width="160" Height="25"/>
+        <Label x:Name="LabelTransactionFilter" Content="TYP TRANSAKCJI:" HorizontalAlignment="Left" Margin="740,577,0,0" VerticalAlignment="Top" Width="110"/>
+        <ComboBox x:Name="ComboBoxTransactionFilterSelect" Style="{StaticResource ComboBoxFlatStyle}" HorizontalAlignment="Left" Height="25" Margin="855,577,0,0" VerticalAlignment="Top" Width="325">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
-                        <Run Text="{Binding DateText}"/>
+                        <Run Text="{Binding TransactionTypeDescription}"/>
                     </TextBlock>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Label x:Name="LabelNickFilter" Content="PSEUDONIM:" HorizontalAlignment="Left" Margin="250,660,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
-        <ComboBox x:Name="ComboBoxNickFilterSelect" Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="250,686,0,0" VerticalAlignment="Top" Width="220">
-                <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock>
-                        <Run Text="{Binding PersonNick}"/>
-                    </TextBlock>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <Label x:Name="LabelTransactionFilter" Content="TYP TRANSAKCJI:" HorizontalAlignment="Left" Margin="480,660,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
-        <ComboBox x:Name="ComboBoxTransactionFilterSelect" Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="480,686,0,0" VerticalAlignment="Top" Width="220">
+        <Label x:Name="LabelTargetFilter" Content="CEL OPERACJI:" HorizontalAlignment="Left" Margin="740,608,0,0" VerticalAlignment="Top" Width="110"/>
+        <ComboBox x:Name="ComboBoxTargetFilterSelect" Style="{StaticResource ComboBoxFlatStyle}" HorizontalAlignment="Left" Height="25" Margin="855,610,0,0" VerticalAlignment="Top" Width="325">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
-                        <Run Text="{Binding DateText}"/>
+                        <Run Text="{Binding PayTargetText}"/>
                     </TextBlock>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Label x:Name="LabelTargetFilter" Content="CEL OPERACJI:" HorizontalAlignment="Left" Margin="710,660,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
-        <ComboBox x:Name="ComboBoxTargetFilterSelect" Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="710,686,0,0" VerticalAlignment="Top" Width="220">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock>
-                        <Run Text="{Binding DateText}"/>
-                    </TextBlock>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <Button x:Name="BtnFilterView" HorizontalAlignment="Left" Margin="959,686,0,0" VerticalAlignment="Top" Width="120" Height="60" FontSize="14" Grid.Column="1">
+        <Button x:Name="BtnFilterView" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="1203,608,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="BtnFilterView_Click">
             <StackPanel Orientation="Vertical">
-                <Image Source="raport_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="30" Width="30" Stretch="Uniform"/>
-                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">FILTRUJ</TextBlock>
+                <Image Source="Resources\filter_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">FILTRUJ LISTĘ</TextBlock>
             </StackPanel>
         </Button>
+
+        <Button x:Name="BtnFilterReset" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="1203,545,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="BtnFilterReset_Click">
+            <StackPanel Orientation="Vertical">
+                <Image Source="Resources\reset_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">RESETUJ LISTĘ</TextBlock>
+            </StackPanel>
+        </Button>
+        <StackPanel HorizontalAlignment="Left" Height="144" Margin="269,533,0,0" VerticalAlignment="Top" Width="301">
+            <Label x:Name="AccountBalanceTitleLabel" Content="SALDO KONTA:"  HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"  Width="281" Height="20" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="5,0" FontWeight="Bold"/>
+            <TextBlock x:Name="AccountBalanceValue" HorizontalAlignment="Center" TextAlignment="Center" Margin="4,5,4,5"  Text="{Binding accountBalanceValue, ConverterCulture=pl-PL, StringFormat=\{0:c\}}" VerticalAlignment="Center" Width="140" Height="30" FontSize="14" FontWeight="Bold" Foreground="#FF155706"/>
+
+        </StackPanel>
+        <Border BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" Height="138" Margin="728,533,0,0" VerticalAlignment="Top" Width="709"/>
+        <Border BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" Height="138" Margin="585,533,0,0" VerticalAlignment="Top" Width="125"/>
+        <Border BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" Height="138" Margin="10,533,0,0" VerticalAlignment="Top" Width="244"/>
+
     </Grid>
 </Window>

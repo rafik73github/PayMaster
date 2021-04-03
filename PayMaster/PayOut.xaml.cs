@@ -46,7 +46,7 @@ namespace PayMaster
             // MessageBox.Show(test);
         }
 
-        private void PayInBtnOk_Click(object sender, RoutedEventArgs e)
+        private void PayOutBtnOk_Click(object sender, RoutedEventArgs e)
         {
             double transactionAmount;
             if (!PayOutDatePicker.Text.Equals("")
@@ -104,7 +104,7 @@ namespace PayMaster
 
         }
 
-        private void PayInBtnCancel_Click(object sender, RoutedEventArgs e)
+        private void PayOutBtnCancel_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             this.Close();

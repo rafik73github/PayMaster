@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PayMaster"
         mc:Ignorable="d"
-        Title="WPŁATA" Height="400" Width="680" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="WPŁATA" Height="400" Width="680" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Resources\money_plus_64x64.png">
     
     <Grid>
         <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="337" Margin="10,10,0,0" VerticalAlignment="Top" Width="645" Panel.ZIndex="-1"/>
@@ -13,9 +13,9 @@
 
         <Label x:Name="LblAddPayerTitle" Content="WPŁATA GOTÓWKI" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" Grid.ColumnSpan="2"/>
         <Label x:Name="LblAddTransactionDate" Content="DATA:" HorizontalAlignment="Left" Margin="25,65,0,0" VerticalAlignment="Top" Width="100"/>
-        <DatePicker x:Name="PayInDatePicker" HorizontalAlignment="Left"  Margin="125,65,0,0" VerticalAlignment="Top" Width="220" SelectedDateFormat="Short" DisplayDate="2021-01-28" Text="czxc" />
+        <DatePicker x:Name="PayInDatePicker" Style="{StaticResource MyDatePicker}" HorizontalAlignment="Left"  Margin="125,65,0,0" VerticalAlignment="Top" Height="25" Width="220" SelectedDateFormat="Short" DisplayDate="2021-01-28" Text="czxc" />
         <Label x:Name="LblAddTransactionPayer" Content="PŁATNIK:" HorizontalAlignment="Left" Margin="25,100,0,0" VerticalAlignment="Top" Width="100"/>
-        <ComboBox x:Name="ComboBoxAddTransactionPayer" HorizontalAlignment="Left" Margin="125,100,0,0" VerticalAlignment="Top" Width="220" SelectionChanged="ComboBoxAddTransactionPayer_SelectionChanged">
+        <ComboBox x:Name="ComboBoxAddTransactionPayer" Style="{StaticResource ComboBoxFlatStyle}" HorizontalAlignment="Left" Margin="125,100,0,0" VerticalAlignment="Top" Height="25" Width="350" SelectionChanged="ComboBoxAddTransactionPayer_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -27,9 +27,9 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <Label x:Name="LblAddTransactionAmount" Content="KWOTA:" HorizontalAlignment="Left" Margin="25,135,0,0" VerticalAlignment="Top" Width="100"/>
-        <TextBox x:Name="TxtAddTransactionAmount" HorizontalAlignment="Left" TextAlignment="Right" Height="23" Margin="125,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220"/>
+        <TextBox x:Name="TxtAddTransactionAmount" Style="{StaticResource MyTextBox}" HorizontalAlignment="Left" TextAlignment="Right" Height="25" Margin="125,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220"/>
         <Label x:Name="LblAddTransactionTarget" Content="CEL:" HorizontalAlignment="Left" Margin="25,170,0,0" VerticalAlignment="Top" Width="100"/>
-        <ComboBox x:Name="ComboBoxAddTransactionTarget" HorizontalAlignment="Left" Margin="125,170,0,0" VerticalAlignment="Top" Width="470" >
+        <ComboBox x:Name="ComboBoxAddTransactionTarget" Style="{StaticResource ComboBoxFlatStyle}" HorizontalAlignment="Left" Margin="125,170,0,0" VerticalAlignment="Top" Height="25" Width="470" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -39,10 +39,21 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <Label x:Name="LblAddTransactionDescription" Content="OPIS:" HorizontalAlignment="Left" Margin="25,205,0,0" VerticalAlignment="Top" Width="100"/>
-        <TextBox x:Name="TxtAddTransactionDescription" HorizontalAlignment="Left" Height="23" Margin="125,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470"/>
-        <Button x:Name="PayInBtnOk" Content="ZAPISZ" HorizontalAlignment="Left" Margin="125,263,0,0" VerticalAlignment="Top" Width="220"  Height="60" Click="PayInBtnOk_Click"/>
-        <Button x:Name="PayInBtnCancel" Content="ZAMKNIJ" HorizontalAlignment="Left" Margin="375,263,0,0" VerticalAlignment="Top" Width="220" Click="PayInBtnCancel_Click" Height="60"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="495,58,0,0" VerticalAlignment="Top" Width="100" Source="money_plus_64x64.png"/>
+        <TextBox x:Name="TxtAddTransactionDescription" Style="{StaticResource MyTextBox}" HorizontalAlignment="Left" Height="25" Margin="125,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470"/>
+        <Button x:Name="PayInBtnOk" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="125,263,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="PayInBtnOk_Click">
+            <StackPanel Orientation="Vertical">
+                <Image Source="Resources\disk_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">ZAPISZ</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button x:Name="PayInBtnCancel" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="375,263,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="PayInBtnCancel_Click">
+            <StackPanel Orientation="Vertical">
+                <Image Source="Resources\close_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">ZAMKNIJ</TextBlock>
+            </StackPanel>
+        </Button>
+        
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="495,58,0,0" VerticalAlignment="Top" Width="100" Source="Resources\money_plus_64x64.png"/>
 
     </Grid>
 </Window>

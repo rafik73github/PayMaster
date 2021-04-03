@@ -33,5 +33,14 @@ namespace PayMaster.TimeTools
             return currentYearStart;
         }
 
+        public string LastDayOfCurrentYear()
+        {
+            var today = DateTime.Today;
+            var currentYearEnd = new DateTime(today.Year, 12, 31).ToString("yyyy-MM-dd");
+
+
+            return currentYearEnd;
+        }
+
     }
 }

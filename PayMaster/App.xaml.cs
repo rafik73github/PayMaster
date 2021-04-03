@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using PayMaster.SQL;
+using PayMaster.Models;
+using System;
 
 namespace PayMaster
 {
@@ -12,10 +14,15 @@ namespace PayMaster
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             new SQLPerson().CreateTablePersons();
-            new SQLTransaction().CreateTableTransactions();
             new SQLPayTarget().CreateTablePayTarget();
-            //new SQLDateFilter().CreateTableDateFilter();
+            new SQLTransaction().CreateTableTransactions();
 
+            FilterModel.DateIndex = 0;
+            FilterModel.FirstDate = "";
+            FilterModel.LastDate = "";
+            FilterModel.TransactionIndex = 0;
+            FilterModel.TargetIndex = 0;
+            
             OpenMainWindow();
         }
 

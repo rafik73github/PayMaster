@@ -79,6 +79,35 @@ namespace PayMaster.SQL
 
         }
 
+        public List<PayTargetModel> GetPayTarget()
+        {
+            List<PayTargetModel> result = new List<PayTargetModel>();
+
+            command.CommandText = "SELECT" +
+                " *" +
+                " FROM pay_target" +
+                " ORDER BY pay_target_text ASC";
+
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            result.Add(new PayTargetModel(-1, "WSZYSTKIE"));
+
+            while (reader.Read())
+            {
+
+                result.Add(new PayTargetModel(Convert.ToInt32(reader["pay_target_id"]),
+                    reader["pay_target_text"].ToString()
+                    ));
+
+
+            }
+            reader.Close();
+
+            return result;
+
+        }
+
         public bool IsTargetExist(string target)
         {
             command.CommandText = "SELECT COUNT" +

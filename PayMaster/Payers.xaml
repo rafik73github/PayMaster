@@ -5,22 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PayMaster"
         mc:Ignorable="d"
-        Title="PŁATNICY" Height="720" Width="680" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="PŁATNICY" Height="720" Width="680" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="Resources\payers_64x64.png">
     <Grid>
         <Label x:Name="LblAddPayerTitle" Content="DODAWANIE PŁATNIKA" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold"/>
         <Label x:Name="LblAddPayerName" Content="IMIĘ:" HorizontalAlignment="Left" Margin="25,65,0,0" VerticalAlignment="Top" Width="100"/>
-        <TextBox x:Name="TxtAddPayerName" HorizontalAlignment="Left" Height="23" Margin="125,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
+        <TextBox x:Name="TxtAddPayerName" Style="{StaticResource MyTextBox}" HorizontalAlignment="Left" Height="25" Margin="125,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
         <Label x:Name="LblAddPayerSurname" Content="NAZWISKO:" HorizontalAlignment="Left" Margin="25,100,0,0" VerticalAlignment="Top" Width="100"/>
-        <TextBox x:Name="TxtAddPayerSurname" HorizontalAlignment="Left" Height="23" Margin="125,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
+        <TextBox x:Name="TxtAddPayerSurname" Style="{StaticResource MyTextBox}" HorizontalAlignment="Left" Height="25" Margin="125,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
         <Label x:Name="LblAddPayerNick" Content="PSEUDONIM:" HorizontalAlignment="Left" Margin="25,135,0,0" VerticalAlignment="Top" Width="100"/>
-        <TextBox x:Name="TxtAddPayerNick" HorizontalAlignment="Left" Height="23" Margin="125,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
-        <Button x:Name="PayersBtnSave" Content="ZAPISZ" HorizontalAlignment="Left" Margin="372,65,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="PayersBtnSave_Click"/>
+        <TextBox x:Name="TxtAddPayerNick" Style="{StaticResource MyTextBox}" HorizontalAlignment="Left" Height="25" Margin="125,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
+        <Button x:Name="PayersBtnSave" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="372,65,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="PayersBtnSave_Click">
+            <StackPanel Orientation="Vertical">
+                <Image Source="Resources\disk_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">ZAPISZ</TextBlock>
+            </StackPanel>
+        </Button>
+        
         <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="163" Margin="10,10,0,0" VerticalAlignment="Top" Width="645" Panel.ZIndex="-1"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="540,26,0,0" VerticalAlignment="Top" Width="100" Source="payers_64x64.png"/>
-        <Button x:Name="PayersBtnClose" Content="ZAMKNIJ" HorizontalAlignment="Left" Margin="262,603,0,0" VerticalAlignment="Top" Width="120" Height="60" Click="PayersBtnClose_Click"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="540,26,0,0" VerticalAlignment="Top" Width="100" Source="Resources\payers_64x64.png"/>
+        <Button x:Name="PayersBtnClose" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="262,603,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="PayersBtnClose_Click">
+            <StackPanel Orientation="Vertical">
+                <Image Source="Resources\close_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">ZAMKNIJ</TextBlock>
+            </StackPanel>
+        </Button>
+        
 
         <Label x:Name="LblPayerListTitle" Content="LISTA PŁATNIKÓW" HorizontalAlignment="Left" Margin="25,192,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold"/>
-        <DataGrid x:Name="PayersGrid" RowEditEnding="PayersGrid_RowEditEnding" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="336" Margin="25,233,0,0" SelectedCellsChanged="PayersGrid_SelectedCellsChanged" VerticalAlignment="Top" Width="615" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False">
+        <DataGrid x:Name="PayersGrid" SelectionMode="Single" RowEditEnding="PayersGrid_RowEditEnding" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="336" Margin="25,233,0,0" SelectedCellsChanged="PayersGrid_SelectedCellsChanged" VerticalAlignment="Top" Width="615" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="200" FontSize="14" Header="IMIĘ" Binding="{Binding PersonName, UpdateSourceTrigger=PropertyChanged}" >
                     <DataGridTextColumn.HeaderStyle>

@@ -9,7 +9,7 @@ namespace PayMaster.Tools
         public double accountBalanceValue { get; set; }
         public AccountBalance()
         {
-            accountBalanceValue = sqlTransaction.getAccountBalance();
+            accountBalanceValue = sqlTransaction.GetAccountBalance();
 
         }
 

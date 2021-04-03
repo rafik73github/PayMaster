@@ -21,6 +21,18 @@ namespace PayMaster
 
         public PayTargetModel
             (
+            int payTargetId,
+            string payTargetText
+            
+            )
+        {
+            this.PayTargetId = payTargetId;
+            this.PayTargetText = payTargetText;
+            
+        }
+
+        public PayTargetModel
+            (
             string payTargetText,
             bool payTargetArchived
             )

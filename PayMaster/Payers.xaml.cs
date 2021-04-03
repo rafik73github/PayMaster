@@ -74,17 +74,16 @@ namespace PayMaster
 
         private void PayersGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            
-              PersonModel tempPerson = PayersGrid.SelectedItem as PersonModel;
-            if (tempPerson != null)
+            // PersonModel tempPerson = PayersGrid.SelectedItem as PersonModel;
+            // if (tempPerson != null)
+            if (PayersGrid.SelectedItem is PersonModel tempPerson)
             {
                 tempPersonName = tempPerson.PersonName;
                 tempPersonSurname = tempPerson.PersonSurname;
                 tempPersonNick = tempPerson.PersonNick;
 
             }
-             //MessageBox.Show(tempPerson.PersonSurname);
-
+            
 
         }
 
@@ -92,7 +91,7 @@ namespace PayMaster
         {
             
             PersonModel person = PayersGrid.SelectedItem as PersonModel;
-
+            
             if (!person.PersonName.Equals(tempPersonName) || !person.PersonSurname.Equals(tempPersonSurname) || !person.PersonNick.Equals(tempPersonNick))
             {
 
