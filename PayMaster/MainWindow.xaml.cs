@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
-using PayMaster.TimeTools;
-using PayMaster.SQL;
 using PayMaster.Tools;
+using PayMaster.SQL;
 using PayMaster.Models;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -38,7 +37,7 @@ namespace PayMaster
             
 
             DataContext = new AccountBalance();
-
+           // MessageBox.Show(new TimeCalculations().GetToday());
         }
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
@@ -49,6 +48,17 @@ namespace PayMaster
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void BtnShowRaport_Click(object sender, RoutedEventArgs e)
+        {
+            List<TransactionModel> list = new List<TransactionModel>();
+            foreach(TransactionModel item in MainGrid.Items)
+            {
+                list.Add(item);
+            }
+            
+            new WordDocTools().GenerateRaport(list);
         }
 
         private void BtnDelRow_Click(object sender, RoutedEventArgs e)

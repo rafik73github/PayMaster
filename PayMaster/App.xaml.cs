@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using PayMaster.SQL;
 using PayMaster.Models;
+using PayMaster.Tools;
 using System;
 
 namespace PayMaster
@@ -13,6 +14,7 @@ namespace PayMaster
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            new WordDocTools().CreateDocDir();
             new SQLPerson().CreateTablePersons();
             new SQLPayTarget().CreateTablePayTarget();
             new SQLTransaction().CreateTableTransactions();

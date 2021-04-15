@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Controls;
 using PayMaster.Models;
 using PayMaster.SQL;
-using PayMaster.TimeTools;
+using PayMaster.Tools;
 
 namespace PayMaster.Tools
 {

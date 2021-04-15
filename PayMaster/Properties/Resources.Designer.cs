@@ -151,22 +151,22 @@ namespace PayMaster.Properties {
         }
         
         /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Icon podobny do zasobu (Ikona).
         /// </summary>
-        internal static System.Drawing.Bitmap paymaster_64x64 {
+        internal static System.Drawing.Icon paymaster_64x64 {
             get {
                 object obj = ResourceManager.GetObject("paymaster_64x64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
         /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Icon podobny do zasobu (Ikona).
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Icon paymaster_64x641 {
+        internal static System.Drawing.Bitmap paymaster_64x641 {
             get {
                 object obj = ResourceManager.GetObject("paymaster_64x641", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

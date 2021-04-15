@@ -49,7 +49,7 @@
                 <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">PŁATNICY</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="BtnShowRaport" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="1321,608,0,0" VerticalAlignment="Top" Width="100" Height="50" >
+        <Button x:Name="BtnShowRaport" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="1321,608,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="BtnShowRaport_Click">
 
             <StackPanel Orientation="Vertical">
                 <Image Source="Resources\raport_64x64.png" Margin="0,0,0,0" HorizontalAlignment="Center" Height="24" Width="24" Stretch="Uniform"/>
@@ -61,6 +61,7 @@
         <Button x:Name="BtnDelRow" IsEnabled="False" Style="{StaticResource MyButtonRed}" HorizontalAlignment="Left" Margin="1321,545,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="BtnDelRow_Click" />
 
         <DataGrid x:Name="MainGrid"
+                  
                   SelectionMode="Single"
                   RowEditEnding="MainGrid_RowEditEnding"
                   SelectedCellsChanged="MainGrid_SelectedCellsChanged"
@@ -79,9 +80,10 @@
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextAlignment" Value="Center" />
-
+                            <Setter Property="VerticalAlignment" Value="Center"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
+                    
                 </DataGridTextColumn>
                 <DataGridTextColumn Width="150" IsReadOnly="True"  FontSize="13" Header="IMIĘ" Binding="{Binding TransactionPersonName}" >
                     <DataGridTextColumn.HeaderStyle>
@@ -94,6 +96,7 @@
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
@@ -108,6 +111,7 @@
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
@@ -122,6 +126,7 @@
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
@@ -135,6 +140,7 @@
                     </DataGridTextColumn.HeaderStyle>
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
                             <Setter Property="TextAlignment" Value="Right" />
                             <Setter Property="Padding" Value="0,0,3,0"/>
                             <Setter Property="Foreground" Value="{Binding TransactionAmount, Converter={StaticResource convertcolorbynegative}}"/>
@@ -153,20 +159,33 @@
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Width="394" IsReadOnly="False"  FontSize="13" Header="OPIS" Binding="{Binding TransactionDescription, UpdateSourceTrigger=PropertyChanged}" >
+                <DataGridTextColumn Width="394" IsReadOnly="False"  FontSize="13" Header="OPIS"
+                                    Binding="{Binding TransactionDescription, UpdateSourceTrigger=PropertyChanged}"
+                                    >
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                             <Setter Property="FontWeight" Value="Bold" />
                             <Setter Property="FontSize" Value="11" />
+                            
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                        
+                    </DataGridTextColumn.ElementStyle>
+                    
                 </DataGridTextColumn>
 
             </DataGrid.Columns>
+            
         </DataGrid>
         <Label x:Name="LabelDateFilter" Content="ZAKRES DAT:" HorizontalAlignment="Left" Margin="740,546,0,0" VerticalAlignment="Top" Width="110"/>
         <DatePicker x:Name="FirstDateFilter" Style="{StaticResource MyDatePicker}" Background="White" BorderBrush="SteelBlue" CalendarClosed="FirstDateFilter_CalendarClosed" HorizontalAlignment="Left" Margin="855,545,0,0" VerticalAlignment="Top" Width="160" Height="25"/>

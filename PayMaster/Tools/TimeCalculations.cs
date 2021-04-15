@@ -1,10 +1,23 @@
 ﻿using System;
 
-namespace PayMaster.TimeTools
+namespace PayMaster.Tools
 {
     class TimeCalculations
     {
-              
+        public string ReformatDateDMY(string date)
+        {
+            var dateFormat = DateTime.Parse(date);
+
+            return dateFormat.ToString("dd.MM.yyyy");
+        }
+          
+        public string GetToday()
+        {
+            var today = DateTime.Today;
+            var todayString = today.ToString("yyyy-MM-dd");
+
+            return todayString;
+        }
 
         public string FirstDayOfMonth(int monthAgo)
         {
