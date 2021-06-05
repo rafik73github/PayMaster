@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Runtime.InteropServices;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
 using PayMaster.SQL;
 
 namespace PayMaster
@@ -9,6 +12,7 @@ namespace PayMaster
     /// </summary>
     public partial class Targets : Window
     {
+        
 
         private readonly SQLPayTarget sqlPayTarget = new SQLPayTarget();
         public Targets()
@@ -17,6 +21,8 @@ namespace PayMaster
 
             TargetsGrid.ItemsSource = sqlPayTarget.GetAllPayTargets();
         }
+
+        
 
         private void TargetBtnClose_Click(object sender, RoutedEventArgs e)
         {

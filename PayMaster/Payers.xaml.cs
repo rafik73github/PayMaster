@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Runtime.InteropServices;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
 using PayMaster.SQL;
 using PayMaster.Tools;
 
@@ -10,6 +13,10 @@ namespace PayMaster
     /// </summary>
     public partial class Payers : Window
     {
+        
+
+
+
         private readonly SQLPerson sqlPerson = new SQLPerson();
         
         private string tempPersonName;
@@ -22,6 +29,8 @@ namespace PayMaster
             PayersGrid.ItemsSource = sqlPerson.GetAllPersons();
             TxtAddPayerSurname.PreviewTextInput += ValidateText.LetterValidatinTextBox;
         }
+
+        
 
         private void PayersBtnClose_Click(object sender, RoutedEventArgs e)
         {

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PayMaster"
         xmlns:tool="clr-namespace:PayMaster.Tool"
         mc:Ignorable="d"
-        Title="PAY MASTER" Height="730" Width="1460" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="Resources/paymaster_64x64.png">
+        Title="PAY MASTER" Height="730" Width="1460" WindowStartupLocation="CenterScreen" Icon="Resources/paymaster_64x64.png">
     <Window.Resources>
         <tool:ConvertColorByNegative x:Key="convertcolorbynegative"/>
 
@@ -83,7 +83,7 @@
                             <Setter Property="VerticalAlignment" Value="Center"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
-                    
+
                 </DataGridTextColumn>
                 <DataGridTextColumn Width="150" IsReadOnly="True"  FontSize="13" Header="IMIĘ" Binding="{Binding TransactionPersonName}" >
                     <DataGridTextColumn.HeaderStyle>
@@ -171,7 +171,7 @@
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                             <Setter Property="FontWeight" Value="Bold" />
                             <Setter Property="FontSize" Value="11" />
-                            
+
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                     <DataGridTextColumn.ElementStyle>
@@ -179,13 +179,13 @@
                             <Setter Property="TextWrapping" Value="WrapWithOverflow" />
                             <Setter Property="VerticalAlignment" Value="Center"/>
                         </Style>
-                        
+
                     </DataGridTextColumn.ElementStyle>
-                    
+
                 </DataGridTextColumn>
 
             </DataGrid.Columns>
-            
+
         </DataGrid>
         <Label x:Name="LabelDateFilter" Content="ZAKRES DAT:" HorizontalAlignment="Left" Margin="740,546,0,0" VerticalAlignment="Top" Width="110"/>
         <DatePicker x:Name="FirstDateFilter" Style="{StaticResource MyDatePicker}" Background="White" BorderBrush="SteelBlue" CalendarClosed="FirstDateFilter_CalendarClosed" HorizontalAlignment="Left" Margin="855,545,0,0" VerticalAlignment="Top" Width="160" Height="25"/>
@@ -223,11 +223,21 @@
                 <TextBlock FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,0,0">RESETUJ LISTĘ</TextBlock>
             </StackPanel>
         </Button>
-        <StackPanel HorizontalAlignment="Left" Height="144" Margin="269,533,0,0" VerticalAlignment="Top" Width="301">
-            <Label x:Name="AccountBalanceTitleLabel" Content="SALDO KONTA:"  HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"  Width="281" Height="20" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="5,0" FontWeight="Bold"/>
-            <TextBlock x:Name="AccountBalanceValue" HorizontalAlignment="Center" TextAlignment="Center" Margin="4,5,4,5"  Text="{Binding accountBalanceValue, ConverterCulture=pl-PL, StringFormat=\{0:c\}}" VerticalAlignment="Center" Width="140" Height="30" FontSize="14" FontWeight="Bold" Foreground="#FF155706"/>
 
-        </StackPanel>
+        <Label x:Name="AcountBalanceTitleLabel" Content="SALDO KONTA:"  HorizontalAlignment="Left" Margin="268,535,0,0" VerticalAlignment="Top"  Width="110" Height="30" FontSize="12" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5,0" FontWeight="Bold"/>
+        <TextBox x:Name="AccountBalanceValue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="390,535,877,134" Text="{Binding AccountBalanceValue, ConverterCulture=pl-PL, StringFormat=\{0:c\}}" Width="170" Height="30" FontSize="14" FontWeight="Bold" Foreground="SteelBlue" BorderThickness="0"/>
+
+        <Label x:Name="ViewBalanceTitleLabel" Content="SALDO WIDOKU:"  HorizontalAlignment="Left" Margin="268,570,0,0" VerticalAlignment="Top"  Width="110" Height="30" FontSize="12" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5,0" FontWeight="Bold"/>
+        <TextBox x:Name="ViewBalanceValue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="390,570,877,99" Text="{Binding ViewBalanceValue, ConverterCulture=pl-PL, StringFormat=\{0:c\}}" Width="170" Height="30" FontSize="14" FontWeight="Bold" Foreground="Black" BorderThickness="0"/>
+
+        <Label x:Name="PayInBalanceTitleLabel" Content="SUMA WPŁAT:"  HorizontalAlignment="Left" Margin="268,605,0,0" VerticalAlignment="Top"  Width="110" Height="30" FontSize="12" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5,0" FontWeight="Bold"/>
+        <TextBox x:Name="PayInBalanceCount" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="383,605,1023,64" Text="{Binding PayInCountOps}" Height="30" FontSize="14" FontWeight="Bold" Foreground="#FF155706" BorderThickness="0"/>
+        <TextBox x:Name="PayInBalanceValue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="452,605,884,64" Text="{Binding PayInBalanceValue, ConverterCulture=pl-PL, StringFormat=\{0:c\}}" Height="30" FontSize="14" FontWeight="Bold" Foreground="#FF155706" BorderThickness="0"/>
+
+        <Label x:Name="PayOutBalanceTitleLabel" Content="SUMA WYPŁAT:"  HorizontalAlignment="Left" Margin="268,640,0,0" VerticalAlignment="Top"  Width="110" Height="30" FontSize="12" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5,0" FontWeight="Bold"/>
+        <TextBox x:Name="PayOutBalanceCount" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="383,640,1023,29" Text="{Binding PayOutCountOps}" Height="30" FontSize="14" FontWeight="Bold" Foreground="Red" BorderThickness="0"/>
+        <TextBox x:Name="PayOutBalanceValue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="452,640,884,29" Text="{Binding PayOutBalanceValue, ConverterCulture=pl-PL, StringFormat=\{0:c\}}" Height="30" FontSize="14" FontWeight="Bold" Foreground="Red" BorderThickness="0"/>
+
         <Border BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" Height="138" Margin="728,533,0,0" VerticalAlignment="Top" Width="709"/>
         <Border BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" Height="138" Margin="585,533,0,0" VerticalAlignment="Top" Width="125"/>
         <Border BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" Height="138" Margin="10,533,0,0" VerticalAlignment="Top" Width="244"/>

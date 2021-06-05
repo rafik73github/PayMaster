@@ -25,6 +25,7 @@ namespace PayMaster
             FilterModel.TransactionIndex = 0;
             FilterModel.TargetIndex = 0;
             
+            
             OpenMainWindow();
         }
 

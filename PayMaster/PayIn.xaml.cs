@@ -13,6 +13,7 @@ namespace PayMaster
     /// </summary>
     public partial class PayIn : Window
     {
+
         private readonly SQLPerson sqlPerson = new SQLPerson();
         private readonly SQLTransaction sqlTransaction = new SQLTransaction();
         private readonly SQLPayTarget sqlPayTarget = new SQLPayTarget();

@@ -13,6 +13,8 @@ namespace PayMaster
     /// </summary>
     public partial class PayOut : Window
     {
+        
+
         private readonly SQLPerson sqlPerson = new SQLPerson();
         private readonly SQLTransaction sqlTransaction = new SQLTransaction();
         private readonly SQLPayTarget sqlPayTarget = new SQLPayTarget();
@@ -36,8 +38,7 @@ namespace PayMaster
 
         }
 
-
-
+        
         private void ComboBoxAddTransactionPayer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Person person = ComboBoxAddTransactionPayer.SelectedItem as Person;

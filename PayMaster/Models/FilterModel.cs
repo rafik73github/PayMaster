@@ -15,6 +15,7 @@ namespace PayMaster.Models
         public static int DateIndex { get; set; }
         public static int TransactionIndex { get; set; }
         public static int TargetIndex { get; set; }
+        
 
 
         

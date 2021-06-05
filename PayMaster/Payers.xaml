@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PayMaster"
         mc:Ignorable="d"
-        Title="PŁATNICY" Height="720" Width="680" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="Resources\payers_64x64.png">
+        Title="PŁATNICY" Height="720" Width="680" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        ResizeMode="NoResize" >
     <Grid>
         <Label x:Name="LblAddPayerTitle" Content="DODAWANIE PŁATNIKA" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold"/>
         <Label x:Name="LblAddPayerName" Content="IMIĘ:" HorizontalAlignment="Left" Margin="25,65,0,0" VerticalAlignment="Top" Width="100"/>

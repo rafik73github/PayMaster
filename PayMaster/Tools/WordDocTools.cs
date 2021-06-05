@@ -10,7 +10,7 @@ namespace PayMaster.Tools
 {
     class WordDocTools
     {
-        TimeCalculations tc = new TimeCalculations();
+        readonly TimeCalculations tc = new TimeCalculations();
         private readonly string docPath = Environment.CurrentDirectory + "\\RAPORTS";
         private readonly string today = new TimeCalculations().GetToday();
         private bool amountFontBold = false;
@@ -225,35 +225,7 @@ namespace PayMaster.Tools
             document.Save();
         }
 
-        public void GenerateDocOld()
-        {
-            DocX document = DocX.Create("test.docx");
-            Paragraph p = document.InsertParagraph();
-            p.Append("bla bla bla");
-            document.InsertParagraph("to kolejna linijka");
-            var t = document.AddTable(5, 2);
-            var c = new float[] { 100f, 300f };
-            t.SetWidths(c);
-            int columnsLen = c.Length;
-            //t.Design = TableDesign.Custom;
-
-            t.Alignment = Alignment.center;
-            t.Rows[0].Cells[0].FillColor = Color.Red;
-            t.Rows[0].Cells[1].FillColor = Color.Red;
-            t.Rows[0].Height = 80;
-            t.Rows[0].Cells[0].Paragraphs[0].Append("Mike").Color(Color.White);
-            t.Rows[0].Cells[1].Paragraphs[0].Append("65").Color(Color.White);
-            t.Rows[1].Cells[0].Paragraphs[0].Append("Kevin");
-            t.Rows[1].Cells[1].Paragraphs[0].Append("62");
-            t.Rows[2].Cells[0].Paragraphs[0].Append("Carl");
-            t.Rows[2].Cells[1].Paragraphs[0].Append("60");
-            t.Rows[3].Cells[0].Paragraphs[0].Append("Michael");
-            t.Rows[3].Cells[1].Paragraphs[0].Append("59");
-            t.Rows[4].Cells[0].Paragraphs[0].Append("Shawn");
-            t.Rows[4].Cells[1].Paragraphs[0].Append("57");
-            document.InsertTable(t);
-            document.Save();
-        }
+        
 
 
     }

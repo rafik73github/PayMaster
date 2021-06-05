@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Diagnostics;
 
 namespace PayMaster
 {
@@ -17,17 +18,22 @@ namespace PayMaster
     public partial class MainWindow : Window
     {
         private string tempTransactionDescription;
-        readonly SetFilterControls setFilterControls = new SetFilterControls();
-        readonly SQLTransaction sqlTransaction = new SQLTransaction();
+        private readonly SetFilterControls setFilterControls = new SetFilterControls();
+        private readonly SQLTransaction sqlTransaction = new SQLTransaction();
+        private readonly string docPath = Environment.CurrentDirectory + "\\RAPORTS";
+
+
         public MainWindow()
         {
             
             InitializeComponent();
 
+            
             FirstDateFilter.Text = FilterModel.FirstDate.Trim();
             LastDateFilter.Text = FilterModel.LastDate.Trim();
 
-                setFilterControls.SetCurrentFilterControls(
+            
+            setFilterControls.SetCurrentFilterControls(
                 MainGrid,
                 FirstDateFilter,
                 LastDateFilter,
@@ -36,7 +42,7 @@ namespace PayMaster
 
             
 
-            DataContext = new AccountBalance();
+            DataContext = new AccountBalance(MainGrid);
            // MessageBox.Show(new TimeCalculations().GetToday());
         }
 
@@ -59,6 +65,12 @@ namespace PayMaster
             }
             
             new WordDocTools().GenerateRaport(list);
+
+            
+                Process.Start(docPath);
+                
+            
+
         }
 
         private void BtnDelRow_Click(object sender, RoutedEventArgs e)
@@ -79,7 +91,7 @@ namespace PayMaster
             ComboBoxTargetFilterSelect);
 
                 BtnDelRow.IsEnabled = false;
-                DataContext = new AccountBalance();
+                DataContext = new AccountBalance(MainGrid);
             }
             else
             {
@@ -90,28 +102,28 @@ namespace PayMaster
         private void BtnPayIn_Click(object sender, RoutedEventArgs e)
         {
             PayIn payIn = new PayIn();
-            this.Close();
+            Close();
             payIn.Show();
         }
 
         private void BtnUsers_Click(object sender, RoutedEventArgs e)
         {
             Payers payers = new Payers();
-            this.Close();
+            Close();
             payers.Show();
         }
 
         private void BtnPayOut_Click(object sender, RoutedEventArgs e)
         {
             PayOut payOut = new PayOut();
-            this.Close();
+            Close();
             payOut.Show();
         }
 
         private void BtnTargets_Click(object sender, RoutedEventArgs e)
         {
             Targets targets = new Targets();
-            this.Close();
+            Close();
             targets.Show();
         }
 
@@ -151,6 +163,9 @@ namespace PayMaster
                     ComboBoxTargetFilterSelect);
 
 
+                DataContext = new AccountBalance(MainGrid);
+
+
                 BtnDelRow.IsEnabled = false;
 
             }
@@ -175,6 +190,8 @@ namespace PayMaster
                     LastDateFilter,
                     ComboBoxTransactionFilterSelect,
                     ComboBoxTargetFilterSelect);
+
+            DataContext = new AccountBalance(MainGrid);
 
             BtnDelRow.IsEnabled = false;
 

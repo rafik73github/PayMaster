@@ -4,10 +4,10 @@ using System.Data.SQLite;
 
 namespace PayMaster.SQL
 {
-    class SQLTransaction
+    internal class SQLTransaction
     {
-        SQLiteConnection sqlConnection;
-        SQLiteCommand command;
+        private readonly SQLiteConnection sqlConnection;
+        private readonly SQLiteCommand command;
 
         public SQLTransaction()
         {
@@ -125,7 +125,7 @@ namespace PayMaster.SQL
             string targetQuery;
 
             
-            switch(transactionType)
+            switch (transactionType)
             {
                 case -1: transactionQuery = ""; break;
                 case 0: transactionQuery = " AND a.tr_pay_in = 0"; break;
@@ -208,6 +208,8 @@ namespace PayMaster.SQL
             
             return result;
         }
+
+       
 
         public void UpdateTransactionDesription(int id, string description)
         {
