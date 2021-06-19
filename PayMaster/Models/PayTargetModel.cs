@@ -1,7 +1,7 @@
 ﻿
 namespace PayMaster
 {
-    class PayTargetModel
+    internal class PayTargetModel
     {
         public int PayTargetId { get; set; }
         public string PayTargetText { get; set; }
@@ -14,21 +14,21 @@ namespace PayMaster
             bool payTargetArchived
             )
         {
-            this.PayTargetId = payTargetId;
-            this.PayTargetText = payTargetText;
-            this.PayTargetArchived = payTargetArchived;
+            PayTargetId = payTargetId;
+            PayTargetText = payTargetText;
+            PayTargetArchived = payTargetArchived;
         }
 
         public PayTargetModel
             (
             int payTargetId,
             string payTargetText
-            
+
             )
         {
-            this.PayTargetId = payTargetId;
-            this.PayTargetText = payTargetText;
-            
+            PayTargetId = payTargetId;
+            PayTargetText = payTargetText;
+
         }
 
         public PayTargetModel
@@ -37,8 +37,8 @@ namespace PayMaster
             bool payTargetArchived
             )
         {
-            this.PayTargetText = payTargetText;
-            this.PayTargetArchived = payTargetArchived;
+            PayTargetText = payTargetText;
+            PayTargetArchived = payTargetArchived;
         }
 
     }

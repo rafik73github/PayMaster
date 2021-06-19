@@ -27,7 +27,7 @@ namespace PayMaster.SQL
 
         public void CreateTableTransactions()
         {
-            
+
             string sqlCommand = "CREATE TABLE IF NOT EXISTS transactions" +
             "(" +
             "tr_id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -73,7 +73,7 @@ namespace PayMaster.SQL
         {
             List<TransactionModel> result = new List<TransactionModel>();
             double convertedMoney;
-            
+
             command.CommandText = "SELECT" +
                 " a.tr_id AS a_tr_id," +
                 " a.tr_date AS a_tr_date," +

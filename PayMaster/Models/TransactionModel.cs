@@ -2,7 +2,7 @@
 
 namespace PayMaster
 {
-    class TransactionModel
+    internal class TransactionModel
     {
 
         public int TransactionId { get; set; }
@@ -30,17 +30,17 @@ namespace PayMaster
             string transactionDescription,
             bool transactionPayIn)
         {
-            this.TransactionId = transactionId;
-            this.TransactionDate = transactionDate;
-            this.TransactionPersonId = transactionPersonId;
-            this.TransactionPersonName = transactionPersonName;
-            this.TransactionPersonSurname = transactionPersonSurname;
-            this.TransactionPersonNick = transactionPersonNick;
-            this.TransactionAmount = transactionAmount;
-            this.TransactionTarget = transactionTarget;
-            this.TransactionTargetText = transactionTargetText;
-            this.TransactionDescription = transactionDescription;
-            this.TransactionPayIn = transactionPayIn;
+            TransactionId = transactionId;
+            TransactionDate = transactionDate;
+            TransactionPersonId = transactionPersonId;
+            TransactionPersonName = transactionPersonName;
+            TransactionPersonSurname = transactionPersonSurname;
+            TransactionPersonNick = transactionPersonNick;
+            TransactionAmount = transactionAmount;
+            TransactionTarget = transactionTarget;
+            TransactionTargetText = transactionTargetText;
+            TransactionDescription = transactionDescription;
+            TransactionPayIn = transactionPayIn;
         }
 
         public TransactionModel(string transactionDate,
@@ -54,16 +54,16 @@ namespace PayMaster
             string transactionDescription,
             bool transactionPayIn)
         {
-            this.TransactionDate = transactionDate;
-            this.TransactionPersonId = transactionPersonId;
-            this.TransactionPersonName = transactionPersonName;
-            this.TransactionPersonSurname = transactionPersonSurname;
-            this.TransactionPersonNick = transactionPersonNick;
-            this.TransactionAmount = transactionAmount;
-            this.TransactionTarget = transactionTarget;
-            this.TransactionTargetText = transactionTargetText;
-            this.TransactionDescription = transactionDescription;
-            this.TransactionPayIn = transactionPayIn;
+            TransactionDate = transactionDate;
+            TransactionPersonId = transactionPersonId;
+            TransactionPersonName = transactionPersonName;
+            TransactionPersonSurname = transactionPersonSurname;
+            TransactionPersonNick = transactionPersonNick;
+            TransactionAmount = transactionAmount;
+            TransactionTarget = transactionTarget;
+            TransactionTargetText = transactionTargetText;
+            TransactionDescription = transactionDescription;
+            TransactionPayIn = transactionPayIn;
         }
 
         public TransactionModel(string transactionDate,
@@ -73,12 +73,12 @@ namespace PayMaster
             int transactionTarget,
             bool transactionPayIn)
         {
-            this.TransactionDate = transactionDate;
-            this.TransactionPersonId = transactionPersonId;
-            this.TransactionAmount = transactionAmount;
-            this.TransactionTarget = transactionTarget;
-            this.TransactionDescription = transactionDescription;
-            this.TransactionPayIn = transactionPayIn;
+            TransactionDate = transactionDate;
+            TransactionPersonId = transactionPersonId;
+            TransactionAmount = transactionAmount;
+            TransactionTarget = transactionTarget;
+            TransactionDescription = transactionDescription;
+            TransactionPayIn = transactionPayIn;
         }
     }
 }

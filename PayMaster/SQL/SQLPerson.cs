@@ -4,12 +4,12 @@ using System.Data.SQLite;
 
 namespace PayMaster.SQL
 {
-    class SQLPerson
+    internal class SQLPerson
     {
 
 
-        SQLiteConnection sqlConnection;
-        SQLiteCommand command;
+        private readonly SQLiteConnection sqlConnection;
+        private readonly SQLiteCommand command;
 
         public SQLPerson()
         {

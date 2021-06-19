@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PayMaster.Models
+﻿namespace PayMaster.Models
 {
-    class TransactionTypeModel
+    internal class TransactionTypeModel
     {
         public int TransactionTypeId { get; set; }
         public string TransactionTypeDescription { get; set; }
@@ -14,15 +8,15 @@ namespace PayMaster.Models
 
         public TransactionTypeModel(int transactionTypeId, string transactionTypeDescription, int transactionTypeValue)
         {
-            this.TransactionTypeId = transactionTypeId;
-            this.TransactionTypeDescription = transactionTypeDescription;
-            this.TransactionTypeValue = transactionTypeValue;
+            TransactionTypeId = transactionTypeId;
+            TransactionTypeDescription = transactionTypeDescription;
+            TransactionTypeValue = transactionTypeValue;
         }
 
         public TransactionTypeModel(string transactionTypeDescription, int transactionTypeValue)
         {
-            this.TransactionTypeDescription = transactionTypeDescription;
-            this.TransactionTypeValue = transactionTypeValue;
+            TransactionTypeDescription = transactionTypeDescription;
+            TransactionTypeValue = transactionTypeValue;
         }
     }
 }

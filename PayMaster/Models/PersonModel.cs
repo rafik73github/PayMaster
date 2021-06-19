@@ -1,9 +1,8 @@
 ﻿
 namespace PayMaster
 {
-    class PersonModel
+    internal class PersonModel
     {
-       
         public int PersonId { get; set; }
         public string PersonName { get; set; }
         public string PersonSurname { get; set; }
@@ -12,25 +11,25 @@ namespace PayMaster
 
         public PersonModel(int personId, string personName, string personSurname, string personNick, bool personArchived)
         {
-            this.PersonId = personId;
-            this.PersonName = personName;
-            this.PersonSurname = personSurname;
-            this.PersonNick = personNick;
-            this.PersonArchived = personArchived;
+            PersonId = personId;
+            PersonName = personName;
+            PersonSurname = personSurname;
+            PersonNick = personNick;
+            PersonArchived = personArchived;
         }
 
         public PersonModel(int personId, string personNick)
         {
-            this.PersonId = personId;
-            this.PersonNick = personNick;
+            PersonId = personId;
+            PersonNick = personNick;
         }
 
         public PersonModel(string personName, string personSurname, string personNick, bool personArchived)
         {
-            this.PersonName = personName;
-            this.PersonSurname = personSurname;
-            this.PersonNick = personNick;
-            this.PersonArchived = personArchived;
+            PersonName = personName;
+            PersonSurname = personSurname;
+            PersonNick = personNick;
+            PersonArchived = personArchived;
         }
 
 

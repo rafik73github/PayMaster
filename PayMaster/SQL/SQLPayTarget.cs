@@ -5,11 +5,11 @@ using System.Data.SQLite;
 
 namespace PayMaster.SQL
 {
-    class SQLPayTarget
+    internal class SQLPayTarget
     {
 
-        SQLiteConnection sqlConnection;
-        SQLiteCommand command;
+        private readonly SQLiteConnection sqlConnection;
+        private readonly SQLiteCommand command;
 
         public SQLPayTarget()
         {

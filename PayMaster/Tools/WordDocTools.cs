@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace PayMaster.Tools
 {
-    class WordDocTools
+    internal class WordDocTools
     {
         readonly TimeCalculations tc = new TimeCalculations();
         private readonly string docPath = Environment.CurrentDirectory + "\\RAPORTS";
@@ -48,7 +48,7 @@ namespace PayMaster.Tools
             document.Sections[0].PageLayout.Orientation = Orientation.Landscape;
             document.AddFooters();
 
-            
+
             Paragraph title = document.InsertParagraph();
             title.Append("ZESTAWIENIE TRANSAKCJI")
                 .FontSize(14d)
@@ -63,7 +63,7 @@ namespace PayMaster.Tools
                 .Append(tc.ReformatDateDMY(today))
                 .Bold(true)
                 .Alignment = Alignment.right;
-            
+
 
             Paragraph checksumText = document.InsertParagraph();
             checksumText.Append("suma kontrolna: ")
@@ -164,9 +164,9 @@ namespace PayMaster.Tools
             for (int i = 0; i < countList ; i++)
             {
                 mainTable.Rows[i + 1].MinHeight = 16;
-                
+
                 mainTable.Rows[i + 1].Cells[0].VerticalAlignment = VerticalAlignment.Center;
-                
+
                 mainTable.Rows[i + 1].Cells[0].Paragraphs[0].Append(transactionModel[i].TransactionDate).Alignment = Alignment.center;
 
                 mainTable.Rows[i + 1].Cells[1].VerticalAlignment = VerticalAlignment.Center;
@@ -174,15 +174,8 @@ namespace PayMaster.Tools
                     + transactionModel[i].TransactionPersonSurname + " " + transactionModel[i].TransactionPersonNick).Alignment = Alignment.left;
 
 
-                
-                if(transactionModel[i].TransactionAmount < 0)
-                {
-                    amountFontBold = true;
-                }
-                else
-                {
-                    amountFontBold = false;
-                }
+
+                amountFontBold = transactionModel[i].TransactionAmount < 0;
                 mainTable.Rows[i + 1].Cells[2].VerticalAlignment = VerticalAlignment.Center;
                 mainTable.Rows[i + 1].Cells[2].Paragraphs[0]
                     .Append(transactionModel[i].TransactionAmount.ToString("C2"))
@@ -201,12 +194,12 @@ namespace PayMaster.Tools
 
             }
 
-            
+
             document.InsertTable(mainTable);
 
             // Add the page number in the first Footer.
             document.Footers.First.InsertParagraph("Strona ").AppendPageNumber(PageNumberFormat.normal)
-                .Append(" z ").AppendPageCount(PageNumberFormat.normal)
+            .Append(" z ").AppendPageCount(PageNumberFormat.normal)
                 .Append("        suma kontrolna: " + controlSum);
 
 

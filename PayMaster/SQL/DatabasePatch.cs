@@ -4,7 +4,7 @@ using System.Data.SQLite;
 
 namespace PayMaster.SQL
 {
-    class DatabasePatch
+    internal class DatabasePatch
     {
 
             public static string GetDatabasePatch()
@@ -12,7 +12,10 @@ namespace PayMaster.SQL
             string dbPath = Environment.CurrentDirectory + "\\DATABASE";
             string dbFilePath;
             if (!string.IsNullOrEmpty(dbPath) && !Directory.Exists(dbPath))
+            {
                 Directory.CreateDirectory(dbPath);
+            }
+
             dbFilePath = dbPath + "\\db_master.db";
             if (!File.Exists(dbFilePath))
             {

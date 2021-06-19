@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace PayMaster.Models
 {
     public static class FilterModel
@@ -15,10 +10,10 @@ namespace PayMaster.Models
         public static int DateIndex { get; set; }
         public static int TransactionIndex { get; set; }
         public static int TargetIndex { get; set; }
-        
 
 
-        
+
+
 
     }
 }
